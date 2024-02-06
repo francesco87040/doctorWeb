@@ -1,0 +1,36 @@
+.display-flex {
+  display: flex;
+}
+
+ion-card-header {
+  text-align: center;
+  padding-top: 40px;
+  font-size: 30px;
+  font-weight: bolder;
+  color: black;
+}
+
+ion-card-title {
+  margin-left: 10px;
+}
+
+ion-card-subtitle {
+  margin-left: 10px;
+  margin-bottom: 30px;
+}
+
+.declined {
+  background-color: red;
+}
+
+.accepted {
+  background-color: green;
+}
+
+.pending {
+  background-color: yellow;
+}
+
+.input{
+  padding: 20px;
+}

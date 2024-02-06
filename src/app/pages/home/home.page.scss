@@ -1,0 +1,19 @@
+.row{
+  height: 500px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/025/799/232/large_2x/linkedin-banner-with-abstract-geometric-background-and-lines-network-connection-free-photo.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.align-page{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+.display-flex{
+  display: flex;
+}
+img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}

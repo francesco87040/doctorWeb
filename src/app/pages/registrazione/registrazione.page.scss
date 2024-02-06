@@ -1,0 +1,38 @@
+.input {
+  --background: white;
+  color: black;
+  border-radius: 25px;
+  margin-top: 40px;
+  width:600px;
+  justify-content: center;
+}
+
+.prima-label {
+  text-align: center;
+  margin-top: 30px;
+  font-size: 29px;
+  font-weight: bolder;
+}
+
+.registrati-button {
+  --border-radius: 20px
+}
+
+ion-input {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  width: 170px;
+}
+
+.toggle-medico {
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 19px;
+  margin-top: 9px;
+}
+.background{
+  background-image:url("/src/assets/icon/studio.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+   background-size: cover;
+}
