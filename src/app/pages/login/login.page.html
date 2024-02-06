@@ -3,7 +3,7 @@
     <ion-col size="6" class="ion-no-padding">
       <img src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain" style="height: 100%;">
     </ion-col>
-    <ion-col size="6" class="ion-no-padding">
+    <ion-col size="6" class="ion-no-padding" style="margin-top: 164px;">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <ion-row class="ion-no-padding"
           style="justify-content: center;margin-top: 50px;font-weight: bold;font-size: 40px;">
@@ -31,12 +31,12 @@
         </ion-row>
         <ion-row class="ion-no-padding"
           style="justify-content: center;margin-top: 20px;font-weight: bold;font-size: 25px;">
-          <ion-checkbox>Ricordami</ion-checkbox>
+          <ion-checkbox [value]="isChecked" (ionChange)="changeValue()" >Ricordami</ion-checkbox>
         </ion-row>
         <ion-row class="ion-no-padding">
           <ion-col size="12">
             <ion-button color="primary" type="submit" size="large" style="width: 500px;" [disabled]="!loginForm.valid"
-              onclick="lsRememberMe()">ACCEDI</ion-button>
+            >ACCEDI</ion-button>
           </ion-col>
         </ion-row>
         <ion-row class="ion-no-padding">

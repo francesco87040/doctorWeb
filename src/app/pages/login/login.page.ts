@@ -19,7 +19,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 
 export class LoginPage {
   loginForm: FormGroup;
-  
+  isChecked: boolean;
+
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: httpClientService,
@@ -28,12 +29,12 @@ export class LoginPage {
     private spinner: NgxSpinnerService
 
   ) {
-    this.buildForm();
+    const savedEmail = storageService.localGet("rememberEmail")
+    this.buildForm(savedEmail ?? '');
   }
-  
-  buildForm() {
+  buildForm(savedEmail?: string) {
     this.loginForm = this.formBuilder.group({
-      username: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl(savedEmail, [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
   }
@@ -46,6 +47,9 @@ export class LoginPage {
     const loginCommand = new UserCommand();
     loginCommand.email = this.loginForm.controls['username'].value;
     loginCommand.password = this.loginForm.controls['password'].value;
+    if (this.isChecked) {
+      this.storageService.localSave("rememberEmail", loginCommand.email)
+    }
     this.httpClient
       .post(
         'http://localhost:8081/sistema-di-prenotazioni/noauth/public/login',
@@ -68,5 +72,10 @@ export class LoginPage {
   }
   goToRegistrazione() {
     this.router.navigate(["/registrazione"])
+  }
+  changeValue() {
+    this.isChecked = !this.isChecked
+    console.log(this.isChecked);
+
   }
 }  
