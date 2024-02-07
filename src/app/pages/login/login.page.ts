@@ -32,24 +32,29 @@ export class LoginPage {
     const savedEmail = storageService.localGet("rememberEmail")
     this.buildForm(savedEmail ?? '');
   }
+
   buildForm(savedEmail?: string) {
     this.loginForm = this.formBuilder.group({
       username: new FormControl(savedEmail, [Validators.required, Validators.email]),
       password: new FormControl('', Validators.required),
     });
   }
+
   onSubmit() {
     this.spinner.show()
-
     if (this.loginForm.invalid) {
       return;
     }
     const loginCommand = new UserCommand();
     loginCommand.email = this.loginForm.controls['username'].value;
     loginCommand.password = this.loginForm.controls['password'].value;
+
     if (this.isChecked) {
       this.storageService.localSave("rememberEmail", loginCommand.email)
+    } else {
+      this.storageService.localRemove("rememberEmail")
     }
+
     this.httpClient
       .post(
         'http://localhost:8081/sistema-di-prenotazioni/noauth/public/login',
@@ -70,12 +75,14 @@ export class LoginPage {
         }
       );
   }
+
   goToRegistrazione() {
     this.router.navigate(["/registrazione"])
   }
+
   changeValue() {
     this.isChecked = !this.isChecked
     console.log(this.isChecked);
-
   }
+
 }  

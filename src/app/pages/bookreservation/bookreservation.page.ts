@@ -1,12 +1,34 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CalendarMode, Step } from 'ionic7-calendar';
 import { httpClientService } from 'src/app/services/httpClient.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { AlertService } from 'src/app/services/alertService.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserCommand } from 'src/app/command/user-command';
-import { Reservation } from 'src/types/types';
+import {
+  CalendarEvent,
+  CalendarEventAction,
+  CalendarEventTimesChangedEvent,
+  CalendarView,
+} from 'angular-calendar';
+import { EventColor } from 'calendar-utils';
+import { addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays } from 'date-fns';
+import { Subject } from 'rxjs';
+
+const colors: Record<string, EventColor> = {
+  red: {
+    primary: '#ad2121',
+    secondary: '#FAE3E3',
+  },
+  blue: {
+    primary: '#1e90ff',
+    secondary: '#D1E8FF',
+  },
+  yellow: {
+    primary: '#e3bc08',
+    secondary: '#FDF1BA',
+  },
+};
 
 @Component({
   selector: 'app-bookreservation',
@@ -14,59 +36,64 @@ import { Reservation } from 'src/types/types';
   styleUrls: ['./bookreservation.page.scss'],
 })
 export class BookreservationPage {
-  selectDoctor:any
-  doctorList:UserCommand[];
+  selectDoctor: any
+  doctorList: UserCommand[];
   doctorId: string;
   user: any;
   eventSource: any
   viewTitle: any
   isToday: boolean;
   reservationDate: any
-  calendar = {
-    mode: 'month' as CalendarMode,
-    step: 30 as Step,
-    currentDate: new Date(),
-    dateFormatter: {
-      formatMonthViewDay: function (date: Date) {
-        return date.getDate().toString();
-      },
-      formatMonthViewDayHeader: function (date: Date) {
-        return 'MonMH';
-      },
-      formatMonthViewTitle: function (date: Date) {
-        return 'testMT';
-      },
-      formatWeekViewDayHeader: function (date: Date) {
-        return 'MonWH';
-      },
-      formatWeekViewTitle: function (date: Date) {
-        return 'testWT';
-      },
-      formatWeekViewHourColumn: function (date: Date) {
-        return 'testWH';
-      },
-      formatDayViewHourColumn: function (date: Date) {
-        return 'testDH';
-      },
-      formatDayViewTitle: function (date: Date) {
-        return 'testDT';
-      }
-    }
+  @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
+  refresh = new Subject<void>();
+
+  view: CalendarView = CalendarView.Month;
+
+  CalendarView = CalendarView;
+
+  viewDate: Date = new Date();
+  reservationList: any[] = []
+
+  modalData: {
+    action: string;
+    event: CalendarEvent;
   };
+
+  events: CalendarEvent[] = [];
+
+  activeDayIsOpen: boolean = true;
+
+  actions: CalendarEventAction[] = [
+    {
+      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      a11yLabel: 'Edit',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.handleEvent('Edited', event);
+      },
+    },
+    {
+      label: '<i class="fas fa-fw fa-trash-alt"></i>',
+      a11yLabel: 'Delete',
+      onClick: ({ event }: { event: CalendarEvent }): void => {
+        this.events = this.events.filter((iEvent) => iEvent !== event);
+        this.handleEvent('Deleted', event);
+      },
+    },
+  ];
 
   constructor(
     private httpClient: httpClientService,
     private activatedRoute: ActivatedRoute,
     private storageService: StorageService,
     private alertService: AlertService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
   ) { }
 
   ionViewWillEnter() {
     this.activatedRoute.queryParams.subscribe((params) => {
       this.doctorId = params['doctorId'];
     });
-    
+
     console.log(this.doctorId);
 
     this.httpClient
@@ -76,32 +103,26 @@ export class BookreservationPage {
       )
       .subscribe(
         (res) => {
-          console.log(res);
+          this.reservationList = res.data
+          this.addEvent(res.data)
         },
         (error) => {
           alert(error?.message ?? error);
         }
       );
-      
   }
+
   ngOnInit() {
     this.user = JSON.parse(this.storageService.localGet('user')!);
-    this.calendar.mode = 'month';
 
-    this.httpClient.post('http://localhost:8081/sistema-di-prenotazioni/api/user/getuseradmin', { roles: 'ROLE_ADMIN' }).subscribe( (res) => {
-      this.doctorList=res;
+    this.httpClient.post('http://localhost:8081/sistema-di-prenotazioni/api/user/getuseradmin', { roles: 'ROLE_ADMIN' }).subscribe((res) => {
+      this.doctorList = res;
       console.log(res);
     })
   }
 
-  
-
-  
-
-
   bookReservation() {
     this.spinner.show()
-    debugger
     this.httpClient.post('http://localhost:8081/sistema-di-prenotazioni/api/reservation/create',
       { idDoctor: this.doctorId ?? this.selectDoctor.id, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
         this.spinner.hide()
@@ -115,79 +136,51 @@ export class BookreservationPage {
       )
   }
 
-  loadEvents() {
-    this.eventSource = this.createRandomEvents();
-  }
-
-  onViewTitleChanged(title: any) {
-    this.viewTitle = title;
-  }
-
-  onEventSelected(event: any) {
-    console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
-  }
-
-  today() {
-    this.calendar.currentDate = new Date();
-  }
-
-  onTimeSelected(ev: any) {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-      (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
-    this.reservationDate = ev.selectedTime
-  }
-
-  onCurrentDateChanged(event: Date) {
-    var today = new Date();
-    today.setHours(0, 0, 0, 0);
-    event.setHours(0, 0, 0, 0);
-    this.isToday = today.getTime() === event.getTime();
-  }
-
-  createRandomEvents() {
-    var events = [];
-    for (var i = 0; i < 50; i += 1) {
-      var date = new Date();
-      var eventType = Math.floor(Math.random() * 2);
-      var startDay = Math.floor(Math.random() * 90) - 45;
-      var endDay = Math.floor(Math.random() * 2) + startDay;
-      var startTime;
-      var endTime;
-      if (eventType === 0) {
-        startTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + startDay));
-        if (endDay === startDay) {
-          endDay += 1;
-        }
-        endTime = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate() + endDay));
-        events.push({
-          title: 'All Day - ' + i,
-          startTime: startTime,
-          endTime: endTime,
-          allDay: true
-        });
+  dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
+    this.reservationDate = date
+    if (isSameMonth(date, this.viewDate)) {
+      if (
+        (isSameDay(this.viewDate, date) && this.activeDayIsOpen === true) ||
+        events.length === 0
+      ) {
+        this.activeDayIsOpen = false;
       } else {
-        var startMinute = Math.floor(Math.random() * 24 * 60);
-        var endMinute = Math.floor(Math.random() * 180) + startMinute;
-        startTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + startDay, 0, date.getMinutes() + startMinute);
-        endTime = new Date(date.getFullYear(), date.getMonth(), date.getDate() + endDay, 0, date.getMinutes() + endMinute);
-        events.push({
-          title: 'Event - ' + i,
-          startTime: startTime,
-          endTime: endTime,
-          allDay: false
-        });
+        this.activeDayIsOpen = true;
       }
+      this.viewDate = date;
     }
-    return events;
   }
-  onRangeChanged(ev: any) {
-    console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
-  }
-  markDisabled = (date: Date) => {
-    var current = new Date();
-    current.setHours(0, 0, 0);
-    return date < current;
-  };
 
+  // \
+
+  handleEvent(action: string, event: CalendarEvent): void {
+    this.modalData = { event, action };
+    // this.modal.open(this.modalContent, { size: 'lg' });
+  }
+
+  addEvent(reservations: any[]): void {
+    reservations.forEach(element => {
+      debugger
+      this.events.push({
+        title: 'Prenotazione di ' + element.name + ' ' + element.surname,
+        start: startOfDay(new Date(element.reservationDate)),
+        end: endOfDay(addDays(new Date(element.reservationDate), 1)),
+        color: colors['red'],
+        draggable: false,
+        resizable: {
+          beforeStart: false,
+          afterEnd: false,
+        },
+      },)
+    });
+  }
+
+  deleteEvent(eventToDelete: CalendarEvent) {
+    this.events = this.events.filter((event) => event !== eventToDelete);
+  }
+
+  closeOpenMonthViewDay() {
+    this.activeDayIsOpen = false;
+  }
 
 }

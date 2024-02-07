@@ -1,9 +1,11 @@
 <ion-content>
   <ion-row class="ion-no-padding" style="width: 100%; justify-content: center;text-align: center; height: 100%; ">
-    <ion-col size="6" class="ion-no-padding">
-      <img src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain" style="height: 100%;">
+    <ion-col size="12" size-sm="6" class="ion-no-padding">
+      <img src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain"
+        style="height: 100%;">
     </ion-col>
-    <ion-col size="6" class="ion-no-padding" style="margin-top: 164px;">
+    <ion-col size="12" size-sm="6" class="ion-no-padding"
+      style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <ion-row class="ion-no-padding"
           style="justify-content: center;margin-top: 50px;font-weight: bold;font-size: 40px;">
@@ -13,43 +15,39 @@
           style="justify-content: center;margin-top: 30px;font-weight: bold;font-size: 30px;">
           <ion-label>Effettua adesso l'accesso per accedere ai nostri servizi</ion-label>
         </ion-row>
-        <ion-row class="ion-no-padding" style="margin-top: 30px;margin-left: 245px;">
-          <ion-col size="12">
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
             <ion-item class="input">
               <ion-label position="floating">Email</ion-label>
               <ion-input type="email" required formControlName="username">
               </ion-input>
             </ion-item>
-          </ion-col>
-          <ion-col size="12">
+          </ion-row>
+          <ion-row class="ion-justify-content-center">
             <ion-item class="input">
               <ion-label position="floating">Password</ion-label>
               <ion-input type="password" required formControlName="password">
               </ion-input>
             </ion-item>
-          </ion-col>
-        </ion-row>
-        <ion-row class="ion-no-padding"
+          </ion-row>
+        </ion-grid>
+
+        <ion-row class="ion-justify-content-center"
           style="justify-content: center;margin-top: 20px;font-weight: bold;font-size: 25px;">
-          <ion-checkbox [value]="isChecked" (ionChange)="changeValue()" >Ricordami</ion-checkbox>
+          <ion-checkbox [value]="isChecked" (ionChange)="changeValue()">Ricordami</ion-checkbox>
         </ion-row>
         <ion-row class="ion-no-padding">
           <ion-col size="12">
-            <ion-button color="primary" type="submit" size="large" style="width: 500px;" [disabled]="!loginForm.valid"
-            >ACCEDI</ion-button>
+            <ion-button color="primary" type="submit" size="large" [disabled]="!loginForm.valid">ACCEDI</ion-button>
           </ion-col>
         </ion-row>
-        <ion-row class="ion-no-padding">
-          <ion-col size="12">
+        <ion-row class="ion-justify-content-center">
             <ion-label style="font-weight: bold;font-size: 20px;">Non sei registrato? Premi qui sotto per farlo
               subito!</ion-label>
-          </ion-col>
         </ion-row>
-        <ion-row class="ion-no-padding">
-          <ion-col size="12">
-            <ion-button color="primary" size="large" style="width: 500px" (click)="goToRegistrazione()"> Registrati
+        <ion-row class="ion-justify-content-center">
+            <ion-button color="primary" size="large" (click)="goToRegistrazione()"> Registrati
             </ion-button>
-          </ion-col>
         </ion-row>
       </form>
     </ion-col>

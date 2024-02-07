@@ -9,6 +9,7 @@ import { BookreservationPageRoutingModule } from './bookreservation-routing.modu
 import { BookreservationPage } from './bookreservation.page';
 import { HeaderModule } from "../../components/header/header.module";
 import { NgCalendarModule } from 'ionic7-calendar';
+import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
     declarations: [BookreservationPage],
@@ -18,7 +19,7 @@ import { NgCalendarModule } from 'ionic7-calendar';
         IonicModule,
         BookreservationPageRoutingModule,
         HeaderModule,
-        NgCalendarModule
+        CalendarModule
     ]
 })
 export class BookreservationPageModule {}

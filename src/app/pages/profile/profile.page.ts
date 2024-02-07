@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserCommand } from 'src/app/command/user-command';
 import { AlertService } from 'src/app/services/alertService.service';
@@ -25,7 +26,8 @@ export class ProfilePage implements OnInit {
     private storageService: StorageService,
     private spinner: NgxSpinnerService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService
+    private alertService: AlertService,
+    private router: Router,
 
   ) {
     this.buidForm();
@@ -116,6 +118,8 @@ export class ProfilePage implements OnInit {
           this.spinner.hide()
           this.alertService.showError('Aggiornamento effettuato', 'Aggiornamento delle informazioni effettuato correttamente')
           console.log(res)
+          this.storageService.localRemove('user')
+          this.router.navigate(['/login'])
         },
         (error) => {
           this.spinner.hide()
