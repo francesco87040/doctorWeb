@@ -30,6 +30,7 @@
 .custom-modal{
     --backdrop-opacity: 1;
     backdrop-filter: blur(3px);
+    
 
     &::part(backdrop) {
         background: #000;

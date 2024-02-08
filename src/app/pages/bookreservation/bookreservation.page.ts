@@ -36,7 +36,6 @@ const colors: Record<string, EventColor> = {
   styleUrls: ['./bookreservation.page.scss'],
 })
 export class BookreservationPage {
-  selectDoctor: any
   doctorList: UserCommand[];
   doctorId: string;
   user: any;
@@ -94,22 +93,7 @@ export class BookreservationPage {
       this.doctorId = params['doctorId'];
     });
 
-    console.log(this.doctorId);
-
-    this.httpClient
-      .post(
-        'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
-        { idDoctor: this.doctorId }
-      )
-      .subscribe(
-        (res) => {
-          this.reservationList = res.data
-          this.addEvent(res.data)
-        },
-        (error) => {
-          alert(error?.message ?? error);
-        }
-      );
+    this.loadDoctor()
   }
 
   ngOnInit() {
@@ -124,7 +108,7 @@ export class BookreservationPage {
   bookReservation() {
     this.spinner.show()
     this.httpClient.post('http://localhost:8081/sistema-di-prenotazioni/api/reservation/create',
-      { idDoctor: this.doctorId ?? this.selectDoctor.id, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
+      { idDoctor: this.doctorId, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
         this.spinner.hide()
         if (res.code == 'KO') {
           this.alertService.showError('Errore', res.message)
@@ -183,4 +167,24 @@ export class BookreservationPage {
     this.activeDayIsOpen = false;
   }
 
+  loadDoctor() {
+debugger
+    this.httpClient
+      .post(
+        'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
+        { idDoctor: this.doctorId }
+        
+      )
+      .subscribe(
+        (res) => {
+          this.reservationList = res.data
+          this.addEvent(res.data)
+          console.log(this.reservationList);
+          
+        },
+        (error) => {
+          alert(error?.message ?? error);
+        }
+      );
+  }
 }

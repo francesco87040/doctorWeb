@@ -13,7 +13,8 @@ export class AlertService {
 
     constructor(
         private modalCtrl: ModalController
-    ) { }
+    ) { 
+    }
 
     async showError(title: string, message: string) {
         const modal = await this.modalCtrl.create({
@@ -23,7 +24,7 @@ export class AlertService {
             componentProps: { title, message },
             cssClass: 'custom-modal',
             mode: 'ios',
-            animated: true
+            animated: true,
         });
         await modal.present();
     }

@@ -20,17 +20,21 @@ ion-card-subtitle {
 }
 
 .declined {
-  background-color: red;
+  background-color: #F33203;
 }
 
 .accepted {
-  background-color: green;
+  background-color: #67EA00;
 }
 
 .pending {
-  background-color: yellow;
+  background-color: #FEFE18	;
 }
 
 .input{
   padding: 20px;
 }
+.colore-bottoni{
+  --background:var(--ion-color-btn)
+}
+

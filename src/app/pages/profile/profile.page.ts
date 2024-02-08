@@ -19,7 +19,7 @@ export class ProfilePage implements OnInit {
   isDoctor: boolean
   updateProfileForm: FormGroup
   profilePic: any = '';
-
+  isChecked: boolean
 
   constructor(
     private httpClient: httpClientService,
@@ -58,24 +58,7 @@ export class ProfilePage implements OnInit {
   }
 
   ionViewWillEnter() {
-    this.spinner.show()
-    this.httpClient
-      .post(
-        this.isDoctor ? 'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation' : 'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getUserReservation',
-        this.isDoctor ? { idDoctor: this.user.id } : { idUser: this.user.id }
-      )
-      .subscribe(
-        (res) => {
-          this.spinner.hide()
-
-          this.userReservationList = res.data
-        },
-        (error) => {
-          this.spinner.hide()
-
-          alert(error?.message ?? error);
-        }
-      );
+    this.getPrenotazioni()
   }
 
   uploadImage(event: any) {
@@ -141,4 +124,46 @@ export class ProfilePage implements OnInit {
     this.updateProfileForm.controls['url'].setValue(this.user.url)
   }
 
+  updateStatus(reservation: any, newStatus: string) {
+    this.spinner.show()
+    const command = { idUser: reservation.idUser, idDoctor: reservation.idDoctor, reservationDate: reservation.reservationDate, status: newStatus, id: reservation.id }
+    this.httpClient
+      .post(
+        'http://localhost:8081/sistema-di-prenotazioni/api/reservation/updateStatus',
+        command
+      )
+
+      .subscribe(
+        (res) => {
+          this.spinner.hide()
+          this.alertService.showError('Aggiornamento effettuato', 'Aggiornamento delle informazioni prenotazione effettuato correttamente')
+          this.getPrenotazioni()
+        },
+        (error) => {
+          this.spinner.hide()
+          this.alertService.showError('Errore', error.message)
+          console.log(error.message);
+        }
+      )
+  }
+  getPrenotazioni(){
+    this.spinner.show()
+    this.httpClient
+      .post(
+        this.isDoctor ? 'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation' : 'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getUserReservation',
+        this.isDoctor ? { idDoctor: this.user.id } : { idUser: this.user.id }
+      )
+      .subscribe(
+        (res) => {
+          this.spinner.hide()
+
+          this.userReservationList = res.data
+        },
+        (error) => {
+          this.spinner.hide()
+
+          alert(error?.message ?? error);
+        }
+      );
+  }
 }

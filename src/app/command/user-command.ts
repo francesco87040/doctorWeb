@@ -13,4 +13,5 @@ export class UserCommand{
     visitDuration:Time;
     specialization!:string;
     url:string;
+    status:string;
 }
