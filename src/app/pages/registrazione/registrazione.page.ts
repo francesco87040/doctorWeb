@@ -9,6 +9,7 @@ import { httpClientService } from '../../services/httpClient.service';
 import { UserCommand } from '../../command/user-command';
 import { Route, Router } from '@angular/router';
 import { HttpResponse } from '@angular/common/http';
+import { showError } from 'src/app/services/showErrorService.service';
 
 @Component({
   selector: 'app-registrazione',
@@ -23,7 +24,8 @@ export class RegistrazionePage {
   constructor(
     private httpClient: httpClientService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private showError:showError
   ) {
     this.buidForm();
   }
@@ -70,14 +72,11 @@ export class RegistrazionePage {
             if (res) {
               if (res.Codice === '201 CREATED') {
                 this.router.navigate(['/login']);
-              } else {
-                alert('Utente già registrato');
               }
             }
           },
           (error) => {
-            console.log(error);
-            alert('Utente già registrato');
+            this.showError.presentAlert('Utente già registrato',"Le credenziali inserite sono già presenti nei nostri sistemi, si prega di riprovare inserendone delle nuove",['Ok','Riprova'])
           }
         );
       console.log(command);
@@ -109,17 +108,15 @@ export class RegistrazionePage {
             if (res) {
               if (res.Codice === '201 CREATED') {
                 this.router.navigate(['/login']);
-              } else {
-                alert('Utente già registrato');
-              }
+              } 
             }
           },
           (error) => {
-            console.log(error);
-            alert('Utente già registrato');
+            this.showError.presentAlert('Dottore già presente',"Le credenziali inserite appartengono ad un dottore già iscritto presso la nostra piattaforma, si prega di riprovare",['Ok','Riprova'])
+          
           }
         );
-      console.log(command);
+     
     }
   }
 

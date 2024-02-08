@@ -10,6 +10,7 @@ import { httpClientService } from 'src/app/services/httpClient.service';
 import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { showError } from 'src/app/services/showErrorService.service';
 
 @Component({
   selector: 'app-login',
@@ -21,12 +22,14 @@ export class LoginPage {
   loginForm: FormGroup;
   isChecked: boolean;
 
+
   constructor(
     private formBuilder: FormBuilder,
     private httpClient: httpClientService,
     private storageService: StorageService,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    private showError: showError
 
   ) {
     const savedEmail = storageService.localGet("rememberEmail")
@@ -70,8 +73,7 @@ export class LoginPage {
         },
         (error) => {
           this.spinner.hide()
-
-          alert(error?.message ?? error);
+          this.showError.presentAlert('Credenziali inserite errate', 'La password o email inserita da voi non corrispondono a quelle inserite durante la registrazione,si prega di riprovare.', ['Ok', 'Riprova'])
         }
       );
   }
