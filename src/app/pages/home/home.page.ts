@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserCommand } from 'src/app/command/user-command';
 import { httpClientService } from 'src/app/services/httpClient.service';
+import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
   selector: 'app-home',
@@ -11,11 +12,13 @@ import { httpClientService } from 'src/app/services/httpClient.service';
 })
 export class HomePage implements OnInit {
   doctorList: UserCommand[];
+  
 
   constructor(
     private httpClient: httpClientService,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+   
   ) { }
 
   ngOnInit() {

@@ -2,7 +2,6 @@ import { Component, TemplateRef, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { httpClientService } from 'src/app/services/httpClient.service';
 import { StorageService } from 'src/app/services/storage.service';
-import { AlertService } from 'src/app/services/alertService.service';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserCommand } from 'src/app/command/user-command';
 import {
@@ -14,6 +13,7 @@ import {
 import { EventColor } from 'calendar-utils';
 import { addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays } from 'date-fns';
 import { Subject } from 'rxjs';
+import { showError } from 'src/app/services/showErrorService.service';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -84,8 +84,8 @@ export class BookreservationPage {
     private httpClient: httpClientService,
     private activatedRoute: ActivatedRoute,
     private storageService: StorageService,
-    private alertService: AlertService,
     private spinner: NgxSpinnerService,
+    private showError:showError
   ) { }
 
   ionViewWillEnter() {
@@ -111,9 +111,9 @@ export class BookreservationPage {
       { idDoctor: this.doctorId, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
         this.spinner.hide()
         if (res.code == 'KO') {
-          this.alertService.showError('Errore', res.message)
+          this.showError.presentAlert('Prenotazione già presente',"Il giorno e l'orario da voi selezionati sono già prenotati",['riprova'])
         } else {
-          this.alertService.showError('Prenotazione Effettuata!', 'La prenotazione è andata a buon fine ')
+        this.showError.presentAlert('Prenotazione effettuata','La prenotazione è stata effettuata correttamente',['ok'])
         }
         console.log(res);
       }
@@ -144,7 +144,6 @@ export class BookreservationPage {
 
   addEvent(reservations: any[]): void {
     reservations.forEach(element => {
-      debugger
       this.events.push({
         title: 'Prenotazione di ' + element.name + ' ' + element.surname,
         start: startOfDay(new Date(element.reservationDate)),
@@ -168,7 +167,7 @@ export class BookreservationPage {
   }
 
   loadDoctor() {
-debugger
+
     this.httpClient
       .post(
         'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
@@ -183,7 +182,7 @@ debugger
           
         },
         (error) => {
-          alert(error?.message ?? error);
+         this.showError.presentAlert('Impossibile visualizzare i dottori','Non è stato possibile recuperare i dottori',['riprova'])
         }
       );
   }

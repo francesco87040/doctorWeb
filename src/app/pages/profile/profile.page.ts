@@ -3,8 +3,8 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { UserCommand } from 'src/app/command/user-command';
-import { AlertService } from 'src/app/services/alertService.service';
 import { httpClientService } from 'src/app/services/httpClient.service';
+import { showError } from 'src/app/services/showErrorService.service';
 import { StorageService } from 'src/app/services/storage.service';
 
 @Component({
@@ -26,8 +26,8 @@ export class ProfilePage implements OnInit {
     private storageService: StorageService,
     private spinner: NgxSpinnerService,
     private formBuilder: FormBuilder,
-    private alertService: AlertService,
     private router: Router,
+    private showError:showError
 
   ) {
     this.buidForm();
@@ -99,15 +99,14 @@ export class ProfilePage implements OnInit {
       .subscribe(
         (res) => {
           this.spinner.hide()
-          this.alertService.showError('Aggiornamento effettuato', 'Aggiornamento delle informazioni effettuato correttamente')
+          this.showError.presentAlert('Aggiornamento effettuato',"L'aggiornamento delle informazioni personali è andato a buon fine",['ok'])
           console.log(res)
           this.storageService.localRemove('user')
           this.router.navigate(['/login'])
         },
         (error) => {
           this.spinner.hide()
-          this.alertService.showError('Errore', error.message)
-          console.log(error.message);
+          this.showError.presentAlert('Aggiornamento fallito',"'L'aggiornamento delle informazioni personali non è andato a buon fine",['riprova'])
         }
       )
   }
@@ -136,13 +135,12 @@ export class ProfilePage implements OnInit {
       .subscribe(
         (res) => {
           this.spinner.hide()
-          this.alertService.showError('Aggiornamento effettuato', 'Aggiornamento delle informazioni prenotazione effettuato correttamente')
+          this.showError.presentAlert('Aggiornamento effettuato',"L'aggiornamento delle informazioni personali è andato a buon fine",['ok'])
           this.getPrenotazioni()
         },
         (error) => {
           this.spinner.hide()
-          this.alertService.showError('Errore', error.message)
-          console.log(error.message);
+          this.showError.presentAlert('Aggiornamento fallito',"'L'aggiornamento delle informazioni personali non è andato a buon fine",['riprova'])
         }
       )
   }
@@ -162,7 +160,7 @@ export class ProfilePage implements OnInit {
         (error) => {
           this.spinner.hide()
 
-          alert(error?.message ?? error);
+          this.showError.presentAlert('Visualizzazione prenotazioni fallito',' La visualizzazione delle prenotazioni non è andato a buon fine',['riprova'])
         }
       );
   }
