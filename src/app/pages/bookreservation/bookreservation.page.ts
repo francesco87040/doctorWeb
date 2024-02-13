@@ -14,6 +14,7 @@ import { EventColor } from 'calendar-utils';
 import { addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startOfDay, subDays } from 'date-fns';
 import { Subject } from 'rxjs';
 import { showError } from 'src/app/services/showErrorService.service';
+import { AlertService } from 'src/app/services/alertService.service';
 
 const colors: Record<string, EventColor> = {
   red: {
@@ -64,18 +65,10 @@ export class BookreservationPage {
 
   actions: CalendarEventAction[] = [
     {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
+      label: '<i class="fas fa-fw fa-pencil-alt">modifica</i>',
       a11yLabel: 'Edit',
       onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
+        this.modalService.showModal(event.id!)
       },
     },
   ];
@@ -85,8 +78,10 @@ export class BookreservationPage {
     private activatedRoute: ActivatedRoute,
     private storageService: StorageService,
     private spinner: NgxSpinnerService,
-    private showError:showError
+    private showError: showError,
+    private modalService:AlertService
   ) { }
+
 
   ionViewWillEnter() {
     this.activatedRoute.queryParams.subscribe((params) => {
@@ -111,9 +106,9 @@ export class BookreservationPage {
       { idDoctor: this.doctorId, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
         this.spinner.hide()
         if (res.code == 'KO') {
-          this.showError.presentAlert('Prenotazione già presente',"Il giorno e l'orario da voi selezionati sono già prenotati",['riprova'])
+          this.showError.presentAlert('Prenotazione già presente', "Il giorno e l'orario da voi selezionati sono già prenotati", ['riprova'])
         } else {
-        this.showError.presentAlert('Prenotazione effettuata','La prenotazione è stata effettuata correttamente',['ok'])
+          this.showError.presentAlert('Prenotazione effettuata', 'La prenotazione è stata effettuata correttamente', ['ok'])
         }
         console.log(res);
       }
@@ -135,8 +130,6 @@ export class BookreservationPage {
     }
   }
 
-  // \
-
   handleEvent(action: string, event: CalendarEvent): void {
     this.modalData = { event, action };
     // this.modal.open(this.modalContent, { size: 'lg' });
@@ -148,13 +141,18 @@ export class BookreservationPage {
         title: 'Prenotazione di ' + element.name + ' ' + element.surname,
         start: startOfDay(new Date(element.reservationDate)),
         end: endOfDay(addDays(new Date(element.reservationDate), 1)),
+        id: element.id,
         color: colors['red'],
         draggable: false,
         resizable: {
           beforeStart: false,
           afterEnd: false,
+          
         },
-      },)
+        actions: this.actions,
+        
+      },
+    )
     });
   }
 
@@ -172,17 +170,17 @@ export class BookreservationPage {
       .post(
         'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
         { idDoctor: this.doctorId }
-        
+
       )
       .subscribe(
         (res) => {
           this.reservationList = res.data
           this.addEvent(res.data)
           console.log(this.reservationList);
-          
+
         },
         (error) => {
-         this.showError.presentAlert('Impossibile visualizzare i dottori','Non è stato possibile recuperare i dottori',['riprova'])
+          this.showError.presentAlert('Impossibile visualizzare i dottori', 'Non è stato possibile recuperare i dottori', ['riprova'])
         }
       );
   }

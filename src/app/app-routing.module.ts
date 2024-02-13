@@ -31,6 +31,7 @@ const routes: Routes = [
     path: 'contatti',
     loadChildren: () => import('./pages/contatti/contatti.module').then( m => m.ContattiPageModule)
   },
+
 ];
 
 @NgModule({

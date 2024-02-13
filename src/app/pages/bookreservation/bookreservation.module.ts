@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -8,7 +8,6 @@ import { BookreservationPageRoutingModule } from './bookreservation-routing.modu
 
 import { BookreservationPage } from './bookreservation.page';
 import { HeaderModule } from "../../components/header/header.module";
-import { NgCalendarModule } from 'ionic7-calendar';
 import { CalendarModule } from 'angular-calendar';
 
 @NgModule({
@@ -19,7 +18,8 @@ import { CalendarModule } from 'angular-calendar';
         IonicModule,
         BookreservationPageRoutingModule,
         HeaderModule,
-        CalendarModule
+        CalendarModule,
+        ReactiveFormsModule
     ]
 })
 export class BookreservationPageModule {}

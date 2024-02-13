@@ -1,9 +1,18 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
+  
   <ion-row class="ion-no-padding"
     style="width: 100%; justify-content: center;text-align: center; height: 100%">
     <ion-col size="12" size-sm="6" class="ion-no-padding"
       style="display: flex; flex-direction: column; justify-content: center; align-items: center;margin-bottom: 195px;">
+      <ion-row class="ion-no-padding"
+  style="width: 100%;text-align: center;">
+    <ion-col size="12">
+      <ion-label style="font-size:30px;font-weight: bold;">
+        Hai qualche dubbio da chiarire o informazione da chiedere? Compila il form sottostante e risponderemo a tutte le vostre richieste!
+      </ion-label>
+    </ion-col>
+  </ion-row>
       <form *ngIf="contattiForm" [formGroup]="contattiForm" (ngSubmit)="onSubmit()">
         <ion-grid>
           <ion-row class="ion-justify-content-center">
