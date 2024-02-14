@@ -52,3 +52,9 @@ ion-checkbox::part(container) {
   border-radius: 6px;
   border: 2px solid green;
 }
+.content{
+  overflow: hidden;
+}
+.ion-no-padding content{
+  overflow: hidden;
+}

@@ -16,6 +16,7 @@ import { Subject } from 'rxjs';
 import { showError } from 'src/app/services/showErrorService.service';
 import { AlertService } from 'src/app/services/alertService.service';
 
+
 const colors: Record<string, EventColor> = {
   red: {
     primary: '#ad2121',
@@ -79,7 +80,7 @@ export class BookreservationPage {
     private storageService: StorageService,
     private spinner: NgxSpinnerService,
     private showError: showError,
-    private modalService:AlertService
+    private modalService: AlertService
   ) { }
 
 
@@ -147,12 +148,12 @@ export class BookreservationPage {
         resizable: {
           beforeStart: false,
           afterEnd: false,
-          
+
         },
         actions: this.actions,
-        
+
       },
-    )
+      )
     });
   }
 
@@ -183,5 +184,7 @@ export class BookreservationPage {
           this.showError.presentAlert('Impossibile visualizzare i dottori', 'Non è stato possibile recuperare i dottori', ['riprova'])
         }
       );
+
   }
+  
 }

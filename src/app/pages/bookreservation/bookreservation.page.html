@@ -7,11 +7,11 @@
         <ion-label>{{ viewDate | calendarDate:(view + 'ViewTitle'):'en' }}</ion-label>
       </ion-col>
     </ion-row>
-    <ion-row class="ion-justify-content-left" style="margin-left:30px;max-width: 50%;">
+    <ion-row class="ion-justify-content-center">
       
         <ion-list>
           <ion-select class="selectDoctor" [(ngModel)]="doctorId" (ionChange)="loadDoctor()"
-            placeholder="Seleziona un dottore">
+            placeholder="SELEZIONE UN DOTTORE">
             <ion-select-option [value]="doctor.id" *ngFor="let doctor of doctorList">{{doctor.name}}
               {{doctor.surname}}</ion-select-option>
           </ion-select>
