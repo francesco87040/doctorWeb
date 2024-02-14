@@ -9,6 +9,8 @@ import { showError } from 'src/app/services/showErrorService.service';
 @Component({
   selector: 'app-errormodal',
   templateUrl: './errormodal.component.html',
+  styleUrls: ['./errormodal.component.scss'],
+
 })
 export class ErrormodalComponent {
   @Input() reservationId: string = ''

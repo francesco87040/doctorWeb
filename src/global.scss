@@ -27,10 +27,10 @@
 /* angular-cli file: src/styles.css */
 @import "../node_modules/angular-calendar/css/angular-calendar.css";
 
-.custom-modal{
+.custom-modal {
     --backdrop-opacity: 1;
     backdrop-filter: blur(3px);
-    
+
 
     &::part(backdrop) {
         background: #000;
@@ -44,6 +44,5 @@
     &::part(content) {
         border-radius: 20px; // Here the border radius
         box-shadow: 0px 0px 20px 5px rgb(0 0 0 / 32%);
-}
-
+    }
 }

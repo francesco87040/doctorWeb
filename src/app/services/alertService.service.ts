@@ -19,7 +19,7 @@ export class AlertService {
         const modal = await this.modalCtrl.create({
             component: ErrormodalComponent,
             breakpoints: [0, 0.3, 0.5, 0.8],
-            initialBreakpoint: 0.5,
+            initialBreakpoint: 0.8,
             componentProps: { reservationId },
             cssClass: 'custom-modal',
             mode: 'ios',
