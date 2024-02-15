@@ -1,4 +1,4 @@
-<ion-row style="height: 105px; background-color: #082e4b">
+<ion-row style="height: 105px; background-color: #082e4b;">
   <ion-col size="4" class="ion-no-padding">
     <ion-toolbar color="translucent">
       <ion-buttons slot="start" style="color: white; align-items: center; zoom: 2.1">
@@ -12,7 +12,16 @@
   </ion-col>
   <ion-col size="4" class="ion-no-padding">
     <ng-container *ngIf="!user">
-      <ion-row style="margin-top: 30px;">
+
+      <ion-row style="margin-top: 30px;text-align: right;">
+        <ion-col>
+          <ion-button (click)="redirectToPage('registrazione')" style="width: 130px;">registrati
+          </ion-button>
+          <ion-button (click)="redirectToPage('login')" style="width: 130px;">login</ion-button>
+        </ion-col>
+      </ion-row>
+
+      <!-- <ion-row style="margin-top: 30px;">
         <ion-col size="6" size-sm="6">
           <ion-button (click)="redirectToPage('registrazione')" style="margin-left: 400px;width: 130px;">registrati
           </ion-button>
@@ -20,21 +29,22 @@
         <ion-col size="6" size-sm="6">
           <ion-button (click)="redirectToPage('login')" style="width: 120px;margin-left: 220px;">login</ion-button>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ng-container>
-    <ng-container *ngIf="user" >
+    <ng-container *ngIf="user">
       <ion-row style="height: 100%; margin-top: 10px">
-        <ion-col size="6">
-        </ion-col>
-        <ion-col size="3" class="ion-text-center" >
+        <ion-col offset="3" size="3" class="ion-text-center" style="display: flex;
+        justify-content: space-around;">
           <ion-avatar>
             <img alt="Silhouette of a person's head" style="zoom: 0.6;" [src]="user.url" />
             <ion-label style="color: white;font-size: 13px;">{{ user.name }} </ion-label>
           </ion-avatar>
         </ion-col>
-        <ion-col size="3">
-          <ion-button style="text-align: center; width: 118px;margin-top:21px ;"
-            (click)="logout();">Logout</ion-button>
+        <ion-col size="6">
+
+          <ion-row style=" display: flex;justify-content: flex-end;">
+            <ion-button style=" width: 118px;margin-top:21px ;" (click)="logout();">Logout</ion-button>
+          </ion-row>
         </ion-col>
       </ion-row>
     </ng-container>

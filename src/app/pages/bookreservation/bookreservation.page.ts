@@ -166,8 +166,8 @@ export class BookreservationPage {
   }
 
   loadDoctor() {
-
-    this.httpClient
+    if(this.doctorId){
+      this.httpClient
       .post(
         'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
         { idDoctor: this.doctorId }
@@ -175,8 +175,8 @@ export class BookreservationPage {
       )
       .subscribe(
         (res) => {
-          this.reservationList = res.data
-          this.addEvent(res.data)
+          this.reservationList = res.data;
+          this.addEvent(res.data);
           console.log(this.reservationList);
 
         },
@@ -184,7 +184,9 @@ export class BookreservationPage {
           this.showError.presentAlert('Impossibile visualizzare i dottori', 'Non è stato possibile recuperare i dottori', ['riprova'])
         }
       );
-
+        
+    }
+   
   }
   
 }

@@ -3,7 +3,7 @@
   color: black;
   border-radius: 25px;
   margin-top: 40px;
-  width:600px;
+  width: 600px;
   justify-content: center;
 }
 
@@ -28,11 +28,12 @@ ion-input {
   font-size: 19px;
   margin-top: 9px;
 }
-.background{
-  background-image:url("/src/assets/icon/studio.png");
+
+.background {
+  background-image: url("/src/assets/icon/studio.png");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
-   background-size: cover;
-   overflow: hidden;
+  background-size: cover;
+  overflow: hidden;
 }

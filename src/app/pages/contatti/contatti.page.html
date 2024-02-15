@@ -1,73 +1,76 @@
 <ion-content [fullscreen]="true">
-  <app-header></app-header>
-  
-  <ion-row class="ion-no-padding"
-    style="width: 100%; justify-content: center;text-align: center; height: 100%">
-    <ion-col size="12" size-sm="6" class="ion-no-padding"
-      style="display: flex; flex-direction: column; justify-content: center; align-items: center;margin-bottom: 195px;">
-      <ion-row class="ion-no-padding"
-  style="width: 100%;text-align: center;">
-    <ion-col size="12">
-      <ion-label style="font-size:30px;font-weight: bold;">
-        Hai qualche dubbio da chiarire o informazione da chiedere? Compila il form sottostante e risponderemo a tutte le vostre richieste!
-      </ion-label>
-    </ion-col>
-  </ion-row>
-      <form *ngIf="contattiForm" [formGroup]="contattiForm" (ngSubmit)="onSubmit()">
-        <ion-grid>
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <ion-item class="input">
-                <ion-label position="floating">Nome</ion-label>
-                <ion-input type="text" required formControlName="name">
-                </ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+  <ion-row>
+
+    <app-header style="width: 100%;"></app-header>
+
+
+    <ion-row class="ion-no-padding"
+      style="width: 100%; justify-content: center;text-align: center; height: 100%;margin-top: 140px;">
+      <ion-col size="12" size-sm="6" class="ion-no-padding"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <ion-row class="ion-no-padding" style="width: 100%;text-align: center;">
+          <ion-col size="12">
+            <ion-label style="font-size:30px;font-weight: bold;">
+              Hai qualche dubbio da chiarire o informazione da chiedere? Compila il form sottostante e risponderemo a
+              tutte le vostre richieste!
+            </ion-label>
+          </ion-col>
+        </ion-row>
+        <form *ngIf="contattiForm" [formGroup]="contattiForm" (ngSubmit)="onSubmit()">
+          <ion-grid>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <ion-item class="input">
+                  <ion-label position="floating">Nome</ion-label>
+                  <ion-input type="text" required formControlName="name">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
 
 
 
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <ion-item class="input">
-                <ion-label position="floating" >Cognome</ion-label>
-                <ion-input type="text" required formControlName="surname">
-                </ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <ion-item class="input">
+                  <ion-label position="floating">Cognome</ion-label>
+                  <ion-input type="text" required formControlName="surname">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
 
 
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <ion-item class="input">
-                <ion-label position="floating" >Email</ion-label>
-                <ion-input type="email" required formControlName="email">
-                </ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <ion-item class="input">
+                  <ion-label position="floating">Email</ion-label>
+                  <ion-input type="email" required formControlName="email">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
 
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <ion-item class="input">
-                <ion-label position="floating">
-                  Richiesta:
-                </ion-label>
-                <ion-input type="text" auto-grow="false"  required formControlName="message">
-                </ion-input>
-              </ion-item>
-            </ion-col>
-          </ion-row>
+            <ion-row class="ion-justify-content-center">
+              <ion-col size="12">
+                <ion-item class="input">
+                  <ion-label position="floating">
+                    Richiesta:
+                  </ion-label>
+                  <ion-input type="text" auto-grow="false" required formControlName="message">
+                  </ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
 
-          <ion-row class="ion-no-padding ion-justify-content-center">
-            <ion-col size="12">
-              <ion-button color="primary" type="submit" size="large" style="margin-top: 30px;"
-               >INVIA</ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </form>
-    </ion-col>
+            <ion-row class="ion-no-padding ion-justify-content-center">
+              <ion-col size="12">
+                <ion-button color="primary" type="submit" size="large" style="margin-top: 30px;">INVIA</ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-col>
+    </ion-row>
   </ion-row>
 </ion-content>
