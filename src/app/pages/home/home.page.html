@@ -20,16 +20,22 @@
   </ion-row>
   <ion-row class="display-flex">
     <ion-col size="4" class="align-page" *ngFor="let doctor of doctorList" class="ion-no-padding">
-      <ion-card class="ion-no-padding" style="height: 330px; border-radius: 25px;">
+
+      <ion-card class="ion-no-padding"
+        style="height: 350px;border-radius: 25px;width: 630px;margin: auto;margin-bottom: 25px;margin-top: 25px;">
         <ion-card-header style="height: 70%" class="ion-no-padding">
-          <img style="height: 95%" src="{{doctor.url}}" alt="" />
+          <img class="background-card"
+            src="https://static.vecteezy.com/system/resources/previews/025/799/232/large_2x/linkedin-banner-with-abstract-geometric-background-and-lines-network-connection-free-photo.jpg">
+          <ion-avatar class="avatar">
+            <img class="image-avatar" src="{{doctor.url}}" />
+          </ion-avatar>
         </ion-card-header>
 
         <ion-card-content class="ion-no-padding">
           <ion-row style="margin-top: 20px">
             <ion-col size="8" class="ion-no-padding">
-              <ion-card-title style="margin-left: 10px">{{doctor.name}} {{doctor.surname}}</ion-card-title>
-              <ion-card-subtitle style="margin-left: 10px">{{doctor.specialization}}</ion-card-subtitle>
+              <ion-card-title style="margin-left: 20px">{{doctor.name}} {{doctor.surname}}</ion-card-title>
+              <ion-card-subtitle style="margin-left: 20px">{{doctor.specialization}}</ion-card-subtitle>
             </ion-col>
             <ion-col size="4" class="ion-no-padding">
               <ion-button style="margin-left: 40px" (click)="buttonReservation(doctor.id ?? '')">Prenota
