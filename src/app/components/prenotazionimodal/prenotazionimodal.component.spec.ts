@@ -1,4 +1,4 @@
-import { ErrormodalComponent } from './errormodal.component';
+import { ErrormodalComponent } from './prenotazionmodal.component';
 
 describe('ErrormodalComponent', () => {
   let component: ErrormodalComponent;

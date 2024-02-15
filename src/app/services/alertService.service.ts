@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { StorageService } from './storage.service';
 import { ModalController } from '@ionic/angular';
-import { ErrormodalComponent } from '../components/errormodal/errormodal.component';
+import { ErrormodalComponent } from '../components/prenotazionimodal/prenotazionmodal.component';
 
 @Injectable({
     providedIn: 'root',

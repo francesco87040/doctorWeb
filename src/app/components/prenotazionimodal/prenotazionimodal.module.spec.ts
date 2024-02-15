@@ -1,4 +1,4 @@
-import { ErrormodalModule } from './errormodal.module';
+import { ErrormodalModule } from './prenotazionimodal.module';
 
 describe('ErrormodalModule', () => {
   const module: ErrormodalModule = new ErrormodalModule();

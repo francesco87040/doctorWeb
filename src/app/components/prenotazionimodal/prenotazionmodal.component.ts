@@ -7,9 +7,9 @@ import { httpClientService } from 'src/app/services/httpClient.service';
 import { showError } from 'src/app/services/showErrorService.service';
 
 @Component({
-  selector: 'app-errormodal',
-  templateUrl: './errormodal.component.html',
-  styleUrls: ['./errormodal.component.scss'],
+  selector: 'app-prenotazionimodal',
+  templateUrl: './prenotazionimodal.component.html',
+  styleUrls: ['./prenotazionimodal.component.scss'],
 
 })
 export class ErrormodalComponent {

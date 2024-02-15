@@ -5,7 +5,9 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-})
+    styleUrl: './header.component.scss'
+  })
+
 export class HeaderComponent implements OnInit {
   isLogged: boolean = false;
   user: any;

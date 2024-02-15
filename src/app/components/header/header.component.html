@@ -1,50 +1,36 @@
-<ion-row style="height: 105px; background-color: #082e4b;">
+<ion-row class="row-principale">
   <ion-col size="4" class="ion-no-padding">
     <ion-toolbar color="translucent">
-      <ion-buttons slot="start" style="color: white; align-items: center; zoom: 2.1">
+      <ion-buttons slot="start" class="burger-button">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-col>
   <ion-col size="4" class="ion-text-center ion-no-padding">
-    <img (click)="redirectToPage('home')" style="width: 110px; cursor: pointer; margin-bottom: 70px"
-      src="../../../assets/logo.png" alt="s" />
+    <img (click)="redirectToPage('home')" class="home-button" src="../../../assets/logo.png" alt="s" />
   </ion-col>
   <ion-col size="4" class="ion-no-padding">
     <ng-container *ngIf="!user">
-
-      <ion-row style="margin-top: 30px;text-align: right;">
-        <ion-col>
-          <ion-button (click)="redirectToPage('registrazione')" style="width: 130px;">registrati
+      <ion-row class="row-not-logged">
+        <ion-col size="6">
+          <ion-button (click)="redirectToPage('registrazione')" class="button-registati">registrati
           </ion-button>
-          <ion-button (click)="redirectToPage('login')" style="width: 130px;">login</ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button (click)="redirectToPage('login')" class="button-login">login</ion-button>
         </ion-col>
       </ion-row>
-
-      <!-- <ion-row style="margin-top: 30px;">
-        <ion-col size="6" size-sm="6">
-          <ion-button (click)="redirectToPage('registrazione')" style="margin-left: 400px;width: 130px;">registrati
-          </ion-button>
-        </ion-col>
-        <ion-col size="6" size-sm="6">
-          <ion-button (click)="redirectToPage('login')" style="width: 120px;margin-left: 220px;">login</ion-button>
-        </ion-col>
-      </ion-row> -->
     </ng-container>
     <ng-container *ngIf="user">
-      <ion-row style="height: 100%; margin-top: 10px">
-        <ion-col offset="3" size="3" class="ion-text-center" style="display: flex;
-        justify-content: space-around;">
+      <ion-row class="row-logged">
+        <ion-col size="6" class="ion-text-center col-logged">
           <ion-avatar>
-            <img alt="Silhouette of a person's head" style="zoom: 0.6;" [src]="user.url" />
-            <ion-label style="color: white;font-size: 13px;">{{ user.name }} </ion-label>
+            <img class="image-avatar"[src]="user.url" />
+            <ion-label class="label-avatar">{{ user.name }} </ion-label>
           </ion-avatar>
         </ion-col>
         <ion-col size="6">
-
-          <ion-row style=" display: flex;justify-content: flex-end;">
-            <ion-button style=" width: 118px;margin-top:21px ;" (click)="logout();">Logout</ion-button>
-          </ion-row>
+          <ion-button class="logout-button" (click)="logout();">Logout</ion-button>
         </ion-col>
       </ion-row>
     </ng-container>
