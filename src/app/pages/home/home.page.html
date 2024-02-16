@@ -22,7 +22,7 @@
     <ion-col size="4" class="col-card" *ngFor="let doctor of doctorList" class="ion-no-padding">
 
       <ion-card class="ion-no-padding card">
-        <ion-card-header style="height: 70%" class="ion-no-padding card">
+        <ion-card-header class="ion-no-padding card-header">
           <img class="background-card"
             src="https://static.vecteezy.com/system/resources/previews/025/799/232/large_2x/linkedin-banner-with-abstract-geometric-background-and-lines-network-connection-free-photo.jpg">
           <ion-avatar class="avatar">
@@ -31,10 +31,10 @@
         </ion-card-header>
 
         <ion-card-content class="ion-no-padding">
-          <ion-row style="margin-top: 20px">
+          <ion-row class="row-card-content">
             <ion-col size="8" class="ion-no-padding">
-              <ion-card-title style="margin-left: 20px">{{doctor.name}} {{doctor.surname}}</ion-card-title>
-              <ion-card-subtitle style="margin-left: 20px">{{doctor.specialization}}</ion-card-subtitle>
+              <ion-card-title class="label-card">{{doctor.name}} {{doctor.surname}}</ion-card-title>
+              <ion-card-subtitle class="label-card" >{{doctor.specialization}}</ion-card-subtitle>
             </ion-col>
             <ion-col size="4" class="ion-no-padding">
               <ion-button class="button-reservation" (click)="buttonReservation(doctor.id ?? '')">Prenota

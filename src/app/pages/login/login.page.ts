@@ -11,6 +11,8 @@ import { StorageService } from 'src/app/services/storage.service';
 import { Router } from '@angular/router';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { showError } from 'src/app/services/showErrorService.service';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-login',
@@ -29,11 +31,16 @@ export class LoginPage {
     private storageService: StorageService,
     private router: Router,
     private spinner: NgxSpinnerService,
-    private showError: showError
+    private showError: showError,
+    public menuCtrl: MenuController
 
   ) {
     const savedEmail = storageService.localGet("rememberEmail")
     this.buildForm(savedEmail ?? '');
+  }
+  
+  ionViewWillEnter() {
+    this.menuCtrl.enable(false);
   }
 
   buildForm(savedEmail?: string) {

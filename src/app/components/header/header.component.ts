@@ -18,8 +18,10 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.router.navigate(['/login']);
     this.storageService.localRemove('user');
-    this.router.navigate(['/login'])
+    this.storageService.localRemove('authToken');
+
   }
   redirectToPage(page:string){
     this.router.navigate(['/'+page])

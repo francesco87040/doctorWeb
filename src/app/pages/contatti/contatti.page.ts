@@ -45,7 +45,6 @@ export class ContattiPage {
       surname: surname,
       message: message,
     }).subscribe((res) => {
-      debugger
       this.spinner.hide()
       this.showError.presentAlert('Richiesta ivniata', 'La vostra richiesta è stata inviata correttamente', ['ok'])
 

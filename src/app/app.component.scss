@@ -1,11 +1,29 @@
-#icon{
+#icon {
     font-size: 30px;
     position: absolute;
     top: 130px;
     right: 5px;
 }
-.avatar{
+
+.avatar {
     position: relative;
     height: 150px;
     width: 150px;
+    text-align: center;
+}
+
+.menu {
+    cursor: pointer
+}
+
+.row-avatar {
+    height: 300px;
+    margin-left: 65px;
+    padding-top: 77px;
+}
+
+.label-under-avatar {
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
 }
