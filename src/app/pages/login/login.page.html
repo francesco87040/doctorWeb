@@ -1,22 +1,19 @@
 <ion-content>
-  <ion-row class="ion-no-padding content" style="width: 100%; justify-content: center;text-align: center; height: 100%; ">
+  <ion-row class="ion-no-padding content">
     <ion-col size="12" size-sm="6" class="ion-no-padding">
       <img src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain"
         style="height: 100%;">
     </ion-col>
-    <ion-col size="12" size-sm="6" class="ion-no-padding"
-      style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <ion-col size="12" size-sm="6" class="ion-no-padding col-principale">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <ion-row class="ion-no-padding"
-          style="justify-content: center;margin-top: 50px;font-weight: bold;font-size: 40px;">
+        <ion-row class="ion-no-padding row-label-login">
           <ion-label>Login</ion-label>
         </ion-row>
-        <ion-row class="ion-no-padding"
-          style="justify-content: center;margin-top: 30px;font-weight: bold;font-size: 30px;">
+        <ion-row class="ion-no-padding row-label-secondaria">
           <ion-label>Effettua adesso l'accesso per accedere ai nostri servizi</ion-label>
         </ion-row>
         <ion-grid>
-          <ion-row class="ion-justify-content-center" >
+          <ion-row class="ion-justify-content-center">
             <ion-item class="input">
               <ion-label position="floating">Email</ion-label>
               <ion-input type="email" required formControlName="username">
@@ -32,22 +29,22 @@
           </ion-row>
         </ion-grid>
 
-        <ion-row class="ion-justify-content-center"
-          style="justify-content: center;margin-top: 20px;font-weight: bold;font-size: 25px;">
+        <ion-row class="ion-justify-content-center row-ricordami-button">
           <ion-checkbox [value]="isChecked" (ionChange)="changeValue()">Ricordami</ion-checkbox>
         </ion-row>
         <ion-row class="ion-no-padding">
           <ion-col size="12">
-            <ion-button color="primary" type="submit" size="large" [disabled]="!loginForm.valid">ACCEDI</ion-button>
+            <ion-button class="button-accedi" color="primary" type="submit" size="large"
+              [disabled]="!loginForm.valid">ACCEDI</ion-button>
           </ion-col>
         </ion-row>
-        <ion-row class="ion-justify-content-center">
-            <ion-label style="font-weight: bold;font-size: 20px;">Non sei registrato? Premi qui sotto per farlo
-              subito!</ion-label>
+        <ion-row class="ion-justify-content-center terza-label">
+          <ion-label class="terza-label">Non sei registrato? Premi qui sotto per farlo
+            subito!</ion-label>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-            <ion-button color="primary" size="large" (click)="goToRegistrazione()"> Registrati
-            </ion-button>
+          <ion-button class="button-registrazione" color="primary" size="large" (click)="goToRegistrazione()"> Registrati
+          </ion-button>
         </ion-row>
       </form>
     </ion-col>

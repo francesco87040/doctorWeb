@@ -1,22 +1,19 @@
 <ion-content>
 
   <body class="background">
-    <ion-row class="ion-no-padding" style="width: 100%; justify-content: center;text-align: center; height: 100%; ">
+    <ion-row class="ion-no-padding row-principale">
       <ion-col size="12" size-sm="6" class="ion-no-padding">
-        <img src="https://th.bing.com/th/id/OIG2.Sv3YYoI5iIW0bbf9byTG?w=1024&h=1024&rs=1&pid=ImgDetMain"
-          style="height: 100%;">
+        <img src="https://th.bing.com/th/id/OIG2.Sv3YYoI5iIW0bbf9byTG?w=1024&h=1024&rs=1&pid=ImgDetMain" class="image">
       </ion-col>
-      <ion-col size="12" size-sm="6" class="ion-no-padding"
-        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <ion-col size="12" size-sm="6" class="ion-no-padding col-principale">
         <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
           <ion-label class="prima-label">REGISTRAZIONE</ion-label>
-          <ion-row class="ion-no-padding"
-            style="justify-content: center;margin-top: 20px;font-weight: bold;font-size: 25px;">
-            <ion-label>Sei un medico? </ion-label><ion-toggle style="padding-top: 9px;margin-left:10px "
+          <ion-row class="ion-no-padding row-label">
+            <ion-label>Sei un medico? </ion-label><ion-toggle class="toggle-medico"
               (ionChange)="checkDoctor()"></ion-toggle>
           </ion-row>
           <ion-grid>
-            <ion-row  class="ion-justify-content-center">
+            <ion-row class="ion-justify-content-center">
               <ion-col size="12">
                 <ion-item class="input">
                   <ion-label position="floating">Nome</ion-label>
@@ -101,9 +98,9 @@
             </ion-row>
           </ion-grid>
 
-          <ion-row  class="ion-justify-content-center">
+          <ion-row class="ion-justify-content-center">
             <ion-col size="12">
-              <ion-button class="registrati-button" type="submit" size="large" style="width: 500px;"
+              <ion-button class="registrati-button" type="submit" size="large"
                 [disabled]="!registrationForm.valid">REGISTRATI</ion-button></ion-col>
           </ion-row>
         </form>

@@ -1,16 +1,11 @@
 <ion-content [fullscreen]="true">
   <ion-row>
-
     <app-header style="width: 100%;"></app-header>
-
-
-    <ion-row class="ion-no-padding"
-      style="width: 100%; justify-content: center;text-align: center; height: 100%;margin-top: 140px;">
-      <ion-col size="12" size-sm="6" class="ion-no-padding content"
-        style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <ion-row class="ion-no-padding row-principale">
+      <ion-col size="12" size-sm="6" class="ion-no-padding content col-principale">
         <ion-row class="ion-no-padding" style="width: 100%;text-align: center;">
           <ion-col size="12">
-            <ion-label style="font-size:30px;font-weight: bold;">
+            <ion-label class="label-centrale">
               Hai qualche dubbio da chiarire o informazione da chiedere? Compila il form sottostante e risponderemo a
               tutte le vostre richieste!
             </ion-label>
@@ -65,7 +60,7 @@
 
             <ion-row class="ion-no-padding ion-justify-content-center">
               <ion-col size="12">
-                <ion-button color="primary" type="submit" size="large" style="margin-top: 30px;">INVIA</ion-button>
+                <ion-button class="button-submit" color="primary" type="submit" size="large">INVIA</ion-button>
               </ion-col>
             </ion-row>
           </ion-grid>

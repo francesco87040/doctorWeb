@@ -5,12 +5,12 @@
 
     </ion-col>
     <ion-col size="8" class="ion-no-padding ion-text-center">
-      <div style="margin-top: 135px;">
+      <div class="div">
 
-        <ion-label style="color: #082e4b; font-size: 52px; ">Benvenuto nel portale dei tuoi dottori di
+        <ion-label class="prima-label">Benvenuto nel portale dei tuoi dottori di
           fiducia!</ion-label>
         <br />
-        <ion-label style="color: #082e4b; font-size: 32px">Benvenuto nel portale dei tuoi dottori di
+        <ion-label class="seconda-label">Benvenuto nel portale dei tuoi dottori di
           fiducia!</ion-label>
       </div>
     </ion-col>
@@ -18,12 +18,11 @@
 
     </ion-col>
   </ion-row>
-  <ion-row class="display-flex">
-    <ion-col size="4" class="align-page" *ngFor="let doctor of doctorList" class="ion-no-padding">
+  <ion-row class="row-card">
+    <ion-col size="4" class="col-card" *ngFor="let doctor of doctorList" class="ion-no-padding">
 
-      <ion-card class="ion-no-padding"
-        style="height: 350px;border-radius: 25px;width: 630px;margin: auto;margin-bottom: 25px;margin-top: 25px;">
-        <ion-card-header style="height: 70%" class="ion-no-padding">
+      <ion-card class="ion-no-padding card">
+        <ion-card-header style="height: 70%" class="ion-no-padding card">
           <img class="background-card"
             src="https://static.vecteezy.com/system/resources/previews/025/799/232/large_2x/linkedin-banner-with-abstract-geometric-background-and-lines-network-connection-free-photo.jpg">
           <ion-avatar class="avatar">
@@ -38,7 +37,7 @@
               <ion-card-subtitle style="margin-left: 20px">{{doctor.specialization}}</ion-card-subtitle>
             </ion-col>
             <ion-col size="4" class="ion-no-padding">
-              <ion-button style="margin-left: 40px" (click)="buttonReservation(doctor.id ?? '')">Prenota
+              <ion-button class="button-reservation" (click)="buttonReservation(doctor.id ?? '')">Prenota
                 ora</ion-button>
             </ion-col>
           </ion-row>

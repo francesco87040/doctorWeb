@@ -62,4 +62,51 @@ ion-checkbox::part(container) {
 
 .content {
   overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.col-principale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 90px;
+}
+
+.row-label-login {
+  justify-content: center;
+  margin-top: 50px;
+  font-weight: bold;
+  font-size: 40px;
+}
+
+.row-label-secondaria{
+  justify-content: center;
+  margin-top: 30px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+.row-ricordami-button {
+  justify-content: center;
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 25px;
+  margin-left: 426px;
+}
+
+.button-accedi {
+  margin-top: 26px;
+  width: 248px;
+}
+.terza-label{
+  margin-top:20px
+}
+
+.button-registrazione{
+  margin-top: 35px;
+  width: 248px;
 }

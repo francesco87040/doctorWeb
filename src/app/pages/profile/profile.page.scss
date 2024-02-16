@@ -28,13 +28,58 @@ ion-card-subtitle {
 }
 
 .pending {
-  background-color: #FEFE18	;
+  background-color: #FEFE18;
 }
 
-.input{
+.input {
   padding: 20px;
 }
-.colore-bottoni{
-  --background:var(--ion-color-btn)
+
+.colore-bottoni {
+  --background: var(--ion-color-btn)
 }
 
+.prima-row {
+  width: 100%;
+  height: auto;
+  background-color: #e0f3f3;
+  margin-bottom: 40px;
+}
+
+.prima-col {
+  margin-top: 35px;
+  margin-bottom: 35px;
+}
+
+.label-modifica-profilo {
+  font-size: 40px;
+  font-weight: bold;
+  color: #082e4b;
+  margin-left: 50px;
+}
+
+.row-card {
+  width: 100%;
+}
+
+.card {
+  height: 250px;
+  border-radius: 25px;
+}
+
+.card-header {
+  height: 165px;
+}
+
+.label-status {
+  margin-bottom: 30px;
+}
+.label-accetta{
+  color:  #67EA00;
+}
+.label-rifiuta{
+  color:#F33203
+}
+.card-title{
+  margin-top: 20px
+}

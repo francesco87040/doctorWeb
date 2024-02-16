@@ -5,13 +5,13 @@
   background-size: cover;
 }
 
-.align-page {
+.col-card {
   display: flex;
   justify-content: center;
   text-align: left;
 }
 
-.display-flex {
+.row-card {
   display: flex;
 }
 
@@ -43,4 +43,33 @@ img {
   width: 67%;
   object-fit: cover;
   border: solid 10px white;
+}
+
+.div {
+  margin-top: 135px;
+}
+
+ion-label {
+  color: #082e4b;
+}
+
+.prima-label {
+  font-size: 52px;
+}
+
+.seconda-label {
+
+  font-size: 32px
+}
+
+.card {
+  height: 350px;
+  border-radius: 25px;
+  width: 630px;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+.button-reservation{
+  margin-left: 40px;
 }

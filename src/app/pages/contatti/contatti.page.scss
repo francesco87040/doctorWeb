@@ -11,3 +11,29 @@ ion-input {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   width: 170px;
 }
+
+.row-principale {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+  margin-top: 140px;
+}
+
+.col-principale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.label-centrale {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.button-submit {
+  margin-top: 30px;
+  width: 450px;
+  --border-radius: 20px;
+}

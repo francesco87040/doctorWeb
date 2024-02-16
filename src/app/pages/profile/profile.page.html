@@ -1,14 +1,9 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
   <form [formGroup]="updateProfileForm" (ngSubmit)="updateProfile()">
-    <ion-row style="
-      width: 100%;
-      height: auto;
-      background-color: #e0f3f3;
-      margin-bottom: 40px;
-    " class="ion-text-center">
-      <ion-col size="12" class="ion-no-padding" style="margin-top: 35px;margin-bottom: 35px;">
-        <ion-label style=" font-size: 40px; font-weight: bold; color: #082e4b; margin-left: 50px;">Modifica
+    <ion-row class="ion-text-center prima-row">
+      <ion-col size="12" class="ion-no-padding prima-col">
+        <ion-label class="label-modifica-profilo">Modifica
           Profilo</ion-label>
       </ion-col>
       <ion-col size="4" class="ion-no-padding">
@@ -61,35 +56,37 @@
 
     </ion-row>
   </form>
-  <ion-row style="width: 100%">
+  <ion-row class="row-card">
     <ion-col size="4" class="align-page" class="ion-no-padding" *ngFor="let reservation of userReservationList">
-      <ion-card class="ion-no-padding" style="height: 250px; border-radius: 25px;">
-        <ion-card-header style="height: 165px" class="ion-no-padding ion-justify-content-center"
+      <ion-card class="ion-no-padding card">
+        <ion-card-header class="ion-no-padding ion-justify-content-center card-header"
           [ngClass]="reservation.status == 'PENDING' ? 'pending' : reservation.status == 'ACCEPTED' ? 'accepted':reservation.status == 'DECLINED' ? 'declined' :null">
-          <ion-label style="margin-bottom: 30px;">
+          <ion-label class="label-status">
             {{reservation.status}}
           </ion-label>
           <ng-container *ngIf="isDoctor">
             <ion-row>
               <ion-col size="6">
-                <ion-button class="accetta colore-bottoni" (click)="updateStatus(reservation,'ACCEPTED')" *ngIf="reservation.status=='PENDING'">
-                  <ion-label style="color:  #67EA00;">
+                <ion-button class="accetta colore-bottoni" (click)="updateStatus(reservation,'ACCEPTED')"
+                  *ngIf="reservation.status=='PENDING'">
+                  <ion-label class="label-accetta">
                     Accetta
                   </ion-label>
                 </ion-button>
               </ion-col>
               <ion-col size="6">
-                <ion-button class="rifiuta colore-bottoni"  (click)="updateStatus(reservation,'DECLINED')" *ngIf="reservation.status=='PENDING'">
-                  <ion-label style="color:#F33203">Rifiuta</ion-label>
+                <ion-button class="rifiuta colore-bottoni" (click)="updateStatus(reservation,'DECLINED')"
+                  *ngIf="reservation.status=='PENDING'">
+                  <ion-label class="label-rifiuta">Rifiuta</ion-label>
                 </ion-button>
               </ion-col>
             </ion-row>
           </ng-container>
         </ion-card-header>
         <ion-card-content class="ion-no-padding ion-text-center">
-          <ion-card-title *ngIf="isDoctor" style="margin-top: 20px">Paziente: {{reservation.name}}
+          <ion-card-title *ngIf="isDoctor" class="card-title">Paziente: {{reservation.name}}
             {{reservation.surname}}</ion-card-title>
-          <ion-card-title *ngIf="!isDoctor" style="margin-top: 20px">Dottore: {{reservation.doctorName}}
+          <ion-card-title *ngIf="!isDoctor" class="card-title">Dottore: {{reservation.doctorName}}
             {{reservation.doctorSurname}}</ion-card-title>
           <ion-card-subtitle>Data Prenotazione: {{reservation.reservationDate}}
           </ion-card-subtitle>

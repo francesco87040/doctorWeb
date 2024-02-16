@@ -15,7 +15,8 @@
 }
 
 .registrati-button {
-  --border-radius: 20px
+  --border-radius: 20px;
+  width: 500px;
 }
 
 ion-input {
@@ -23,10 +24,8 @@ ion-input {
 }
 
 .toggle-medico {
-  text-align: center;
-  margin-bottom: 20px;
-  font-size: 19px;
-  margin-top: 9px;
+  margin-top: 8.5px;
+  margin-left: 10px;
 }
 
 .background {
@@ -36,4 +35,28 @@ ion-input {
   background-attachment: fixed;
   background-size: cover;
   overflow: hidden;
+}
+
+.row-principale {
+  width: 100%;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
+}
+
+.image {
+  height: 100%;
+}
+
+.col-principale {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.row-label {
+  justify-content: center;
+  margin-top: 20px;
+  font-size: 25px;
 }
