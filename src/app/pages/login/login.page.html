@@ -1,8 +1,7 @@
 <ion-content>
   <ion-row class="ion-no-padding content">
-    <ion-col size="12" size-sm="6" class="ion-no-padding">
-      <img src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain"
-        style="height: 100%;">
+    <ion-col size="12" size-sm="6" class="ion-no-padding col-image">
+      <img class="image" src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain">
     </ion-col>
     <ion-col size="12" size-sm="6" class="ion-no-padding col-principale">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -34,7 +33,7 @@
         </ion-row>
         <ion-row class="ion-no-padding">
           <ion-col size="12">
-            <ion-button class="button-accedi" color="primary" type="submit" size="large"
+            <ion-button class="button-accedi" color="primary" type="submit"
               [disabled]="!loginForm.valid">ACCEDI</ion-button>
           </ion-col>
         </ion-row>
@@ -43,7 +42,7 @@
             subito!</ion-label>
         </ion-row>
         <ion-row class="ion-justify-content-center">
-          <ion-button class="button-registrazione" color="primary" size="large" (click)="goToRegistrazione()"> Registrati
+          <ion-button class="button-registrazione" color="primary" (click)="goToRegistrazione()"> Registrati
           </ion-button>
         </ion-row>
       </form>

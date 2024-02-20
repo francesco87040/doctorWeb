@@ -1,18 +1,18 @@
 <ion-row class="row-principale">
-  <ion-col size="4" class="ion-no-padding">
+  <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="4" [offsetSm]="0" class="ion-no-padding">
     <ion-toolbar color="translucent">
       <ion-buttons slot="start" class="burger-button">
         <ion-menu-button></ion-menu-button>
       </ion-buttons>
     </ion-toolbar>
   </ion-col>
-  <ion-col size="4" class="ion-text-center ion-no-padding">
+  <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="4" [offsetSm]="0" class="ion-text-center ion-no-padding">
     <img (click)="redirectToPage('home')" class="home-button" src="../../../assets/logo.png" alt="s" />
   </ion-col>
-  <ion-col size="4" class="ion-no-padding">
+  <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="4" [offsetSm]="0" class="ion-no-padding">
     <ng-container *ngIf="!user">
       <ion-row class="row-not-logged">
-        <ion-col size="6">
+        <ion-col size="6" >
           <ion-button (click)="redirectToPage('registrazione')" class="button-registati">registrati
           </ion-button>
         </ion-col>
@@ -24,13 +24,13 @@
     <ng-container *ngIf="user">
       <ion-row class="row-logged">
         <ion-col size="6" class="ion-text-center col-logged">
-          <ion-avatar>
+          <ion-avatar class="avatar">
             <img class="image-avatar"[src]="user.url" />
             <ion-label class="label-avatar">{{ user.name }} </ion-label>
           </ion-avatar>
         </ion-col>
         <ion-col size="6">
-          <ion-button class="logout-button" (click)="logout();">Logout</ion-button>
+      <ion-icon name='log-out-outline'  class="logout-button" (click)="logout();"></ion-icon>
         </ion-col>
       </ion-row>
     </ng-container>

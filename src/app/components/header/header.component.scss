@@ -8,6 +8,10 @@
     align-items: center;
     zoom: 2.1
 }
+.avatar {
+    margin-right: -139px;
+}
+
 
 .home-button {
     width: 110px;
@@ -30,7 +34,7 @@
     margin-right: 20px;
 }
 
-.row-logged{
+.row-logged {
     height: 100%;
     margin-top: 10px;
     margin-left: 60%
@@ -41,17 +45,94 @@
     justify-content: space-around;
 }
 
-.image-avatar {
-    zoom: 0.6;
-}
-
 .label-avatar {
     color: white;
     font-size: 13px;
 }
 
+.image-avatar {
+    border: solid 3px white;
+}
+
+
 .logout-button {
-    width: 118px;
-    margin-top: 21px;
-    margin-left: -10px;
+    width: 62px;
+    height: 43px;
+    margin-left: 70px;
+    margin-top: 16px;
+    color: white;
+}
+
+@media screen and (max-width:630px) {
+    .row-principale {
+        height: 105px;
+        background-color: #082e4b;
+    }
+
+    .burger-button {
+        color: white;
+        align-items: center;
+        zoom: 1.4;
+        margin-top: 18px;
+
+    }
+
+    .home-button {
+        width: 110px;
+        cursor: pointer;
+        height: 102px;
+        margin-top: 3px;
+    }
+
+
+    .row-not-logged {
+        margin-top: 30px;
+        text-align: right;
+    }
+
+    .button-registati {
+        width: 130px;
+        margin-right: -160px
+    }
+
+    .button-login {
+        width: 130px;
+        margin-right: 20px;
+    }
+
+    .row-logged {
+        height: 100%;
+        margin-top: 10px;
+        margin-left: 60%
+    }
+
+    .col-logged {
+        display: flex;
+        justify-content: space-around;
+
+    }
+
+    .avatar {
+        zoom: 1.2;
+        margin-left: -235px;
+    }
+
+    .image-avatar {
+        border: solid 3px white;
+        height: 48px;
+        margin-top: 3px;
+    }
+
+    .label-avatar {
+        color: white;
+        font-size: 13px;
+    }
+
+    .logout-button {
+        width: 62px;
+        height: 43px;
+        margin-left: -39px;
+        margin-top: 16px;
+        color: white;
+    }
 }
