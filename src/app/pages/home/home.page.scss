@@ -15,12 +15,6 @@
   display: flex;
 }
 
-img {
-  height: 300px;
-  width: 100%;
-  object-fit: cover;
-}
-
 .avatar {
   --border-radius: 140px;
   width: 37%;
@@ -54,11 +48,12 @@ ion-label {
 }
 
 .prima-label {
-  font-size: 52px;
+  font-size: clamp(25px,6vw,50px);
 }
 
 .seconda-label {
-  font-size: 32px
+  font-size: clamp(15px,4vw,32px);
+
 }
 
 .card {
@@ -79,5 +74,94 @@ ion-label {
   margin-top: 20px;
 }
 .label-card{
+  margin-top: 3px;
   margin-left: 20px;
+}
+.label-card-2{
+  margin-left: 20px;
+}
+@media screen and (max-width:630px){
+  .row {
+  height: 300px;
+  background-image: url('https://static.vecteezy.com/system/resources/previews/025/799/232/large_2x/linkedin-banner-with-abstract-geometric-background-and-lines-network-connection-free-photo.jpg');
+  background-repeat: no-repeat;
+  background-size:15cm;
+}
+.prima-col{
+  height:200px;
+}
+
+.col-card {
+  display: flex;
+  justify-content: center;
+  text-align: left;
+}
+
+.row-card {
+  display: flex;
+  margin-top: -150px
+}
+
+
+.avatar {
+  --border-radius: 140px;
+  height: 19%;
+  zoom: 0.7;
+  margin-left: 38%;
+  position: absolute; 
+}
+
+.background-card {
+  height: 181px;
+  width: 340px;
+  margin: auto;
+  margin-bottom: 8px;
+  border-radius: 25px;
+}
+
+.image-avatar {
+  height: 125px;
+  width: 125px;
+  object-fit: cover;
+  border: solid 7px white;
+}
+
+.div {
+  margin-top: 30px;
+  
+}
+
+ion-label {
+  color: #082e4b;
+}
+
+.card {
+  height: 290px;
+  border-radius: 25px;
+  width: 370px;
+  margin: auto;
+  margin-bottom: 25px;
+  margin-top: 25px;
+}
+.button-reservation{
+  width: 111px;
+  margin-top: -8px;
+  margin-left: -3px;  
+}
+.card-header{
+  height: 70%;
+}
+.row-card-content{
+  margin-top:24px;
+}
+.label-card{
+  margin-top:-1px;
+  margin-left: 20px;
+  font-size: 15px;
+}
+.label-card-2{
+  font-size: 10px;
+  margin-top: 5px;
+  margin-left: 20px;
+}
 }

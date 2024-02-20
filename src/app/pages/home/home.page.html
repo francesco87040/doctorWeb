@@ -1,10 +1,7 @@
 <ion-content [fullscreen]="true">
   <app-header></app-header>
   <ion-row class="row">
-    <ion-col size="2">
-
-    </ion-col>
-    <ion-col size="8" class="ion-no-padding ion-text-center">
+    <ion-col [sizeSm]="12" [sizeXl]="8" [offsetXl]="2" [offsetSm]="0" class="ion-no-padding ion-text-center">
       <div class="div">
 
         <ion-label class="prima-label">Benvenuto nel portale dei tuoi dottori di
@@ -14,12 +11,9 @@
           fiducia!</ion-label>
       </div>
     </ion-col>
-    <ion-col size="2">
-
-    </ion-col>
   </ion-row>
   <ion-row class="row-card">
-    <ion-col size="4" class="col-card" *ngFor="let doctor of doctorList" class="ion-no-padding">
+    <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="12" [offsetSm]="0"    class="col-card" *ngFor="let doctor of doctorList" class="ion-no-padding">
 
       <ion-card class="ion-no-padding card">
         <ion-card-header class="ion-no-padding card-header">
@@ -34,7 +28,7 @@
           <ion-row class="row-card-content">
             <ion-col size="8" class="ion-no-padding">
               <ion-card-title class="label-card">{{doctor.name}} {{doctor.surname}}</ion-card-title>
-              <ion-card-subtitle class="label-card" >{{doctor.specialization}}</ion-card-subtitle>
+              <ion-card-subtitle class="label-card-2">{{doctor.specialization}}</ion-card-subtitle>
             </ion-col>
             <ion-col size="4" class="ion-no-padding">
               <ion-button class="button-reservation" (click)="buttonReservation(doctor.id ?? '')">Prenota

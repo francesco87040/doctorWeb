@@ -15,6 +15,7 @@ import { addDays, addHours, endOfDay, endOfMonth, isSameDay, isSameMonth, startO
 import { Subject } from 'rxjs';
 import { showError } from 'src/app/services/showErrorService.service';
 import { AlertService } from 'src/app/services/alertService.service';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 
 const colors: Record<string, EventColor> = {
@@ -44,7 +45,8 @@ export class BookreservationPage {
   eventSource: any
   viewTitle: any
   isToday: boolean;
-  reservationDate: any
+  reservationDate: any;
+  prenotazioneForm: FormGroup;
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
   refresh = new Subject<void>();
 
@@ -80,8 +82,14 @@ export class BookreservationPage {
     private storageService: StorageService,
     private spinner: NgxSpinnerService,
     private showError: showError,
-    private modalService: AlertService
-  ) { }
+    private modalService: AlertService,
+    private formBuilder: FormBuilder
+  ) { this.buidForm(); }
+  buidForm() {
+    this.prenotazioneForm = this.formBuilder.group({
+      time: new FormControl('', Validators.required),
+    });
+  }
 
 
   ionViewWillEnter() {
@@ -102,9 +110,12 @@ export class BookreservationPage {
   }
 
   bookReservation() {
+    debugger
+    const reservationTimeHour = new Date(new Date(this.prenotazioneForm.controls['time'].value).getTime()).getHours();
+    const reservationTimeMinute = new Date(new Date(this.prenotazioneForm.controls['time'].value).getTime()).getMinutes();
     this.spinner.show()
     this.httpClient.post('http://localhost:8081/sistema-di-prenotazioni/api/reservation/create',
-      { idDoctor: this.doctorId, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate: new Date(this.reservationDate), status: 'PENDING' }).subscribe((res) => {
+      { idDoctor: this.doctorId, idUser: this.user.id, name: this.user.name, surname: this.user.surname, reservationDate:new Date(this.reservationDate.setHours(reservationTimeHour,reservationTimeMinute)), status: 'PENDING' }).subscribe((res) => {
         this.spinner.hide()
         if (res.code == 'KO') {
           this.showError.presentAlert('Prenotazione già presente', "Il giorno e l'orario da voi selezionati sono già prenotati", ['riprova'])
@@ -166,27 +177,27 @@ export class BookreservationPage {
   }
 
   loadDoctor() {
-    if(this.doctorId){
+    if (this.doctorId) {
       this.httpClient
-      .post(
-        'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
-        { idDoctor: this.doctorId }
+        .post(
+          'http://localhost:8081/sistema-di-prenotazioni/api/reservation/getDoctorReservation',
+          { idDoctor: this.doctorId }
 
-      )
-      .subscribe(
-        (res) => {
-          this.reservationList = res.data;
-          this.addEvent(res.data);
-          console.log(this.reservationList);
+        )
+        .subscribe(
+          (res) => {
+            this.reservationList = res.data;
+            this.addEvent(res.data);
+            console.log(this.reservationList);
 
-        },
-        (error) => {
-          this.showError.presentAlert('Impossibile visualizzare i dottori', 'Non è stato possibile recuperare i dottori', ['riprova'])
-        }
-      );
-        
+          },
+          (error) => {
+            this.showError.presentAlert('Impossibile visualizzare i dottori', 'Non è stato possibile recuperare i dottori', ['riprova'])
+          }
+        );
+
     }
-   
+
   }
-  
+
 }
