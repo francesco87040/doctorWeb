@@ -1,110 +1,115 @@
 <ion-content>
 
   <body class="background">
-    <ion-row class="ion-no-padding row-principale">
-      <ion-col size="12" size-sm="6" class="ion-no-padding">
-        <img src="https://th.bing.com/th/id/OIG2.Sv3YYoI5iIW0bbf9byTG?w=1024&h=1024&rs=1&pid=ImgDetMain" class="image">
-      </ion-col>
-      <ion-col size="12" size-sm="6" class="ion-no-padding col-principale">
-        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
-          <ion-label class="prima-label">REGISTRAZIONE</ion-label>
-          <ion-row class="ion-no-padding row-label">
-            <ion-label>Sei un medico? </ion-label><ion-toggle class="toggle-medico"
-              (ionChange)="checkDoctor()"></ion-toggle>
-          </ion-row>
-          <ion-grid>
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Nome</ion-label>
-                  <ion-input type="text" required formControlName="name"></ion-input>
-                </ion-item>
-              </ion-col>
+    <ion-content>
+      <ion-row class="ion-no-padding row-principale">
+        <ion-col [sizeXl]="6" [offsetXl]="0" [sizeSm]="12" [offsetSm]="0" class="ion-no-padding col-image">
+          <img src="https://th.bing.com/th/id/OIG2.Sv3YYoI5iIW0bbf9byTG?w=1024&h=1024&rs=1&pid=ImgDetMain" class="image">
+        </ion-col>
+        <ion-col [sizeXl]="6" [offsetXl]="0" [sizeSm]="12" [offsetSm]="0" class="ion-no-padding col-principale">
+          <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
+            <ion-row class="row-prima-label">
+              <ion-label class="prima-label">REGISTRAZIONE</ion-label>
             </ion-row>
-
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Cognome</ion-label>
-                  <ion-input type="text" required formControlName="surname"></ion-input>
-                </ion-item>
-              </ion-col>
+            <ion-row class="ion-no-padding row-label">
+              <ion-label>Sei un medico? </ion-label><ion-toggle class="toggle-medico"
+                (ionChange)="checkDoctor()"></ion-toggle>
             </ion-row>
-
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Email</ion-label>
-                  <ion-input type="email" required formControlName="email"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Password</ion-label>
-                  <ion-input type="password" required formControlName="password"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Data di nascita</ion-label>
-                  <ion-input type="date" required formControlName="birthDate"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-            <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-label position="floating">Numero di cellulare</ion-label>
-                  <ion-input type="number" placeholder="0000000000" required formControlName="phone"></ion-input>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-
-
-            <!-- //se sei un medico -->
-            <ng-container *ngIf="isDoctor">
+            <ion-grid>
               <ion-row class="ion-justify-content-center">
-                <ion-col size="12">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
                   <ion-item class="input">
-                    <ion-label position="floating">Durata Visita Media</ion-label>
-                    <ion-input type="time" required formControlName="visitDuration"></ion-input>
+                    <ion-label position="floating">Nome</ion-label>
+                    <ion-input type="text" required formControlName="name"></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
-
+  
               <ion-row class="ion-justify-content-center">
-                <ion-col size="12">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
                   <ion-item class="input">
-                    <ion-label position="floating">Specializzazione</ion-label>
-                    <ion-input type="text" required formControlName="specialization"></ion-input>
+                    <ion-label position="floating">Cognome</ion-label>
+                    <ion-input type="text" required formControlName="surname"></ion-input>
                   </ion-item>
                 </ion-col>
               </ion-row>
-            </ng-container>
-
+  
+              <ion-row class="ion-justify-content-center">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
+                  <ion-item class="input">
+                    <ion-label position="floating">Email</ion-label>
+                    <ion-input type="email" required formControlName="email"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+  
+              <ion-row class="ion-justify-content-center">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
+                  <ion-item class="input">
+                    <ion-label position="floating">Password</ion-label>
+                    <ion-input type="password" required formControlName="password"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+  
+              <ion-row class="ion-justify-content-center">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
+                  <ion-item class="input">
+                    <ion-label position="floating">Data di nascita</ion-label>
+                    <ion-input type="date" required formControlName="birthDate"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+  
+              <ion-row class="ion-justify-content-center">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
+                  <ion-item class="input">
+                    <ion-label position="floating">Numero di cellulare</ion-label>
+                    <ion-input type="number" placeholder="0000000000" required formControlName="phone"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+  
+  
+              <!-- //se sei un medico -->
+              <ng-container *ngIf="isDoctor">
+                <ion-row class="ion-justify-content-center">
+                  <ion-col [sizeXl]="12" [sizeSm]="12">
+                    <ion-item class="input">
+                      <ion-label position="floating">Durata Visita Media</ion-label>
+                      <ion-input type="time" required formControlName="visitDuration"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+  
+                <ion-row class="ion-justify-content-center">
+                  <ion-col [sizeXl]="12" [sizeSm]="12">
+                    <ion-item class="input">
+                      <ion-label position="floating">Specializzazione</ion-label>
+                      <ion-input type="text" required formControlName="specialization"></ion-input>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ng-container>
+  
+              <ion-row class="ion-justify-content-center">
+                <ion-col [sizeXl]="12" [sizeSm]="12">
+                  <ion-item class="input">
+                    <ion-input type="file" accept="image/*" (change)="uploadImage($event)"></ion-input>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+  
             <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
-                <ion-item class="input">
-                  <ion-input type="file" accept="image/*" (change)="uploadImage($event)"></ion-input>
-                </ion-item>
-              </ion-col>
+              <ion-col [sizeXl]="12" [sizeSm]="12">
+                <ion-button class="registrati-button" type="submit"
+                  [disabled]="!registrationForm.valid">REGISTRATI</ion-button></ion-col>
             </ion-row>
-          </ion-grid>
-
-          <ion-row class="ion-justify-content-center">
-            <ion-col size="12">
-              <ion-button class="registrati-button" type="submit" size="large"
-                [disabled]="!registrationForm.valid">REGISTRATI</ion-button></ion-col>
-          </ion-row>
-        </form>
-      </ion-col>
-    </ion-row>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-content>
+    
   </body>
 </ion-content>

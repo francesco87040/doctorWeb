@@ -7,9 +7,13 @@
   justify-content: center;
 }
 
+.row-prima-label {
+  justify-content: center;
+  align-items: center;
+}
+
 .prima-label {
   text-align: center;
-  margin-top: 30px;
   font-size: 29px;
   font-weight: bolder;
 }
@@ -17,6 +21,7 @@
 .registrati-button {
   --border-radius: 20px;
   width: 500px;
+  height: 50px;
 }
 
 ion-input {
@@ -34,7 +39,6 @@ ion-input {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: cover;
-  overflow: hidden;
 }
 
 .row-principale {
@@ -42,6 +46,7 @@ ion-input {
   justify-content: center;
   text-align: center;
   height: 100%;
+  overflow: hidden;
 }
 
 .image {
@@ -59,4 +64,80 @@ ion-input {
   justify-content: center;
   margin-top: 20px;
   font-size: 25px;
+}
+
+@media screen and (max-width:630px) {
+  .row-prima-label {
+    justify-content: center;
+    align-items: center;
+    margin-top:69px;
+  }
+
+  .col-image {
+    display: none;
+  }
+
+  .input {
+    --background: white;
+    color: black;
+    border-radius: 25px;
+    margin-top: 40px;
+    width: 300px;
+
+  }
+
+  .prima-label {
+    font-size: 27px;
+    font-weight: bolder;
+  }
+
+  .registrati-button {
+    --border-radius: 20px;
+    width: 265px;
+    height: 50px;
+  }
+
+  ion-input {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  .toggle-medico {
+    margin-top: 2.5px;
+    margin-left: 5px;
+  }
+
+  .background {
+    background-image: url("/src/assets/icon/studio.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+  }
+
+  .row-principale {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    height: 100%;
+    overflow: visible;
+
+  }
+
+  .image {
+    height: 100%;
+  }
+
+  .col-principale {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+  }
+
+  .row-label {
+    justify-content: center;
+    margin-top: 13px;
+    font-size: 16px;
+  }
 }

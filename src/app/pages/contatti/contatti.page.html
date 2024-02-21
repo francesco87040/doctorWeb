@@ -2,9 +2,9 @@
   <ion-row>
     <app-header style="width: 100%;"></app-header>
     <ion-row class="ion-no-padding row-principale">
-      <ion-col size="12" size-sm="6" class="ion-no-padding content col-principale">
-        <ion-row class="ion-no-padding" style="width: 100%;text-align: center;">
-          <ion-col size="12">
+      <ion-col size="12" [sizeSm]="6" [offsetSm]="0" class="ion-no-padding content col-principale">
+        <ion-row class="ion-no-padding row-label">
+          <ion-col size="12" [sizeSm]="12">
             <ion-label class="label-centrale">
               Hai qualche dubbio da chiarire o informazione da chiedere? Compila il form sottostante e risponderemo a
               tutte le vostre richieste!
@@ -14,7 +14,7 @@
         <form *ngIf="contattiForm" [formGroup]="contattiForm" (ngSubmit)="onSubmit()">
           <ion-grid>
             <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
+              <ion-col size="12" [sizeSm]="12">
                 <ion-item class="input">
                   <ion-label position="floating">Nome</ion-label>
                   <ion-input type="text" required formControlName="name">
@@ -26,7 +26,7 @@
 
 
             <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
+              <ion-col size="12" [sizeSm]="12">
                 <ion-item class="input">
                   <ion-label position="floating">Cognome</ion-label>
                   <ion-input type="text" required formControlName="surname">
@@ -37,7 +37,7 @@
 
 
             <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
+              <ion-col size="12" [sizeSm]="12">
                 <ion-item class="input">
                   <ion-label position="floating">Email</ion-label>
                   <ion-input type="email" required formControlName="email">
@@ -47,7 +47,7 @@
             </ion-row>
 
             <ion-row class="ion-justify-content-center">
-              <ion-col size="12">
+              <ion-col size="12"[sizeSm]="12">
                 <ion-item class="input">
                   <ion-label position="floating">
                     Richiesta:
@@ -59,7 +59,7 @@
             </ion-row>
 
             <ion-row class="ion-no-padding ion-justify-content-center">
-              <ion-col size="12">
+              <ion-col size="12" [sizeSm]="12">
                 <ion-button class="button-submit" color="primary" type="submit" size="large">INVIA</ion-button>
               </ion-col>
             </ion-row>

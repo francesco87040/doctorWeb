@@ -1,9 +1,9 @@
 <ion-content>
   <ion-row class="ion-no-padding content">
-    <ion-col size="12" size-sm="6" class="ion-no-padding col-image">
+    <ion-col [sizeXl]="6" [offsetXl]="0" [sizeSm]="12" [offsetSm]="0" class="ion-no-padding col-image">
       <img class="image" src="https://th.bing.com/th/id/OIG4.T8IEq4UumQZxNBmwNgOK?w=1024&h=1024&rs=1&pid=ImgDetMain">
     </ion-col>
-    <ion-col size="12" size-sm="6" class="ion-no-padding col-principale">
+    <ion-col [sizeXl]="6" [offsetXl]="0" [sizeSm]="12" [offsetSm]="0" class="ion-no-padding col-principale">
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <ion-row class="ion-no-padding row-label-login">
           <ion-label>Login</ion-label>
@@ -32,7 +32,7 @@
           <ion-checkbox [value]="isChecked" (ionChange)="changeValue()">Ricordami</ion-checkbox>
         </ion-row>
         <ion-row class="ion-no-padding">
-          <ion-col size="12">
+          <ion-col [sizeXl]="12" [sizeSm]="12">
             <ion-button class="button-accedi" color="primary" type="submit"
               [disabled]="!loginForm.valid">ACCEDI</ion-button>
           </ion-col>

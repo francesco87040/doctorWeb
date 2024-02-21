@@ -12,11 +12,10 @@
   <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="4" [offsetSm]="0" class="ion-no-padding">
     <ng-container *ngIf="!user">
       <ion-row class="row-not-logged">
-        <ion-col size="6" >
-          <ion-button (click)="redirectToPage('registrazione')" class="button-registati">registrati
-          </ion-button>
+        <ion-col size="3" offset="3" >
+          <ion-button (click)="redirectToPage('registrazione')" class="button-registati">registrati</ion-button>
         </ion-col>
-        <ion-col size="6">
+        <ion-col size="3" offset="3">
           <ion-button (click)="redirectToPage('login')" class="button-login">login</ion-button>
         </ion-col>
       </ion-row>

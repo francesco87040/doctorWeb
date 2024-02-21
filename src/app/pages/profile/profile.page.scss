@@ -32,7 +32,13 @@ ion-card-subtitle {
 }
 
 .input {
-  padding: 20px;
+  --background: white;
+  color: black;
+  --border-radius: 25px;
+  width: 600px;
+  align-items: center;
+  margin: auto;
+  justify-content: space-between;
 }
 
 .colore-bottoni {
@@ -74,12 +80,129 @@ ion-card-subtitle {
 .label-status {
   margin-bottom: 30px;
 }
-.label-accetta{
-  color:  #67EA00;
+
+.label-accetta {
+  color: #67EA00;
 }
-.label-rifiuta{
-  color:#F33203
+
+.label-rifiuta {
+  color: #F33203
 }
-.card-title{
+
+.card-title {
   margin-top: 20px
+}
+
+.update-button {
+  width: 400px;
+  height: 60px;
+  --border-radius: 20px;
+  cursor: pointer;
+}
+
+@media screen and (max-width:630px) {
+  .display-flex {
+    display: flex;
+  }
+
+  .input {
+    --background: white;
+    color: black;
+    --border-radius: 20px;
+    width: 330px;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 30px;
+  }
+
+  ion-card-header {
+    text-align: center;
+    padding-top: 40px;
+    font-size: 30px;
+    font-weight: bolder;
+    color: black;
+  }
+
+  ion-card-title {
+    margin-left: 10px;
+  }
+
+  ion-card-subtitle {
+    margin-left: 10px;
+    margin-bottom: 30px;
+  }
+
+  .declined {
+    background-color: #F33203;
+  }
+
+  .accepted {
+    background-color: #67EA00;
+  }
+
+  .pending {
+    background-color: #FEFE18;
+  }
+
+  .colore-bottoni {
+    --background: var(--ion-color-btn)
+  }
+
+  .prima-row {
+    width: 100%;
+    height: auto;
+    background-color: #e0f3f3;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .prima-col {
+    margin-top: 35px;
+    margin-bottom: 35px;
+  }
+
+  .label-modifica-profilo {
+    font-size: clamp(30px,6vw,50px);    font-weight: bold;
+    color: #082e4b;
+    margin-right: 43px;
+  }
+
+  .row-card {
+    width: 100%;
+  }
+
+  .card {
+    height: 250px;
+    border-radius: 25px;
+    width: 335px;
+    margin: auto;
+    margin-bottom: 44px;
+  }
+
+  .card-header {
+    height: 165px;
+  }
+
+  .label-status {
+    margin-bottom: 30px;
+  }
+
+  .label-accetta {
+    color: #67EA00;
+  }
+
+  .label-rifiuta {
+    color: #F33203
+  }
+
+  .card-title {
+    margin-top: 20px
+  }
+
+  .update-button {
+    width: 200px;
+    height: 60px;
+    --border-radius: 20px;
+  }
 }
