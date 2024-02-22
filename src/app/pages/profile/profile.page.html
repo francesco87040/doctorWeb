@@ -100,7 +100,7 @@
             {{reservation.surname}}</ion-card-title>
           <ion-card-title *ngIf="!isDoctor" class="card-title">Dottore: {{reservation.doctorName}}
             {{reservation.doctorSurname}}</ion-card-title>
-          <ion-card-subtitle>Data Prenotazione: {{reservation.reservationDate}}
+          <ion-card-subtitle>Data Prenotazione: {{reservation.reservationDate | date:'dd/MM/yyyy H:mm'}}
           </ion-card-subtitle>
         </ion-card-content>
       </ion-card>

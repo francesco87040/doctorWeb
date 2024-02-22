@@ -135,12 +135,12 @@ export class ProfilePage implements OnInit {
       .subscribe(
         (res) => {
           this.spinner.hide()
-          this.showError.presentAlert('Aggiornamento effettuato',"L'aggiornamento delle informazioni personali è andato a buon fine",['ok'])
+          this.showError.presentAlert('Aggiornamento effettuato',"L'aggiornamento della prenotazione è andato a buon fine",['ok'])
           this.getPrenotazioni()
         },
         (error) => {
           this.spinner.hide()
-          this.showError.presentAlert('Aggiornamento fallito',"'L'aggiornamento delle informazioni personali non è andato a buon fine",['riprova'])
+          this.showError.presentAlert('Aggiornamento fallito',"'L'aggiornamento della prenotazione non è andato a buon fine",['riprova'])
         }
       )
   }
@@ -153,6 +153,7 @@ export class ProfilePage implements OnInit {
       )
       .subscribe(
         (res) => {
+
           this.spinner.hide()
 
           this.userReservationList = res.data

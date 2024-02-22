@@ -10,28 +10,16 @@
     <img (click)="redirectToPage('home')" class="home-button" src="../../../assets/logo.png" alt="s" />
   </ion-col>
   <ion-col [sizeXl]="4" [offsetXl]="0" [sizeSm]="4" [offsetSm]="0" class="ion-no-padding">
-    <ng-container *ngIf="!user">
-      <ion-row class="row-not-logged">
-        <ion-col size="3" offset="3" >
-          <ion-button (click)="redirectToPage('registrazione')" class="button-registati">registrati</ion-button>
-        </ion-col>
-        <ion-col size="3" offset="3">
-          <ion-button (click)="redirectToPage('login')" class="button-login">login</ion-button>
-        </ion-col>
-      </ion-row>
-    </ng-container>
-    <ng-container *ngIf="user">
-      <ion-row class="row-logged">
-        <ion-col size="6" class="ion-text-center col-logged">
-          <ion-avatar class="avatar">
-            <img class="image-avatar"[src]="user.url" />
-            <ion-label class="label-avatar">{{ user.name }} </ion-label>
-          </ion-avatar>
-        </ion-col>
-        <ion-col size="6">
-      <ion-icon name='log-out-outline'  class="logout-button" (click)="logout();"></ion-icon>
-        </ion-col>
-      </ion-row>
-    </ng-container>
+    <ion-row class="row-logged">
+      <ion-col size="6" class="ion-text-center col-logged">
+        <ion-avatar class="avatar">
+          <img class="image-avatar" [src]="user.url" />
+          <ion-label class="label-avatar">{{ user.name }} </ion-label>
+        </ion-avatar>
+      </ion-col>
+      <ion-col size="6">
+        <ion-icon name='log-out-outline' class="logout-button" (click)="logout();"></ion-icon>
+      </ion-col>
+    </ion-row>
   </ion-col>
 </ion-row>

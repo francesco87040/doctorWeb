@@ -16,6 +16,7 @@ import { Subject } from 'rxjs';
 import { showError } from 'src/app/services/showErrorService.service';
 import { AlertService } from 'src/app/services/alertService.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 
 const colors: Record<string, EventColor> = {

@@ -10,15 +10,6 @@ ion-card-header {
   color: black;
 }
 
-ion-card-title {
-  margin-left: 10px;
-}
-
-ion-card-subtitle {
-  margin-left: 10px;
-  margin-bottom: 30px;
-}
-
 .declined {
   background-color: #F33203;
 }
@@ -125,13 +116,9 @@ ion-card-subtitle {
   }
 
   ion-card-title {
-    margin-left: 10px;
-  }
-
-  ion-card-subtitle {
-    margin-left: 10px;
-    margin-bottom: 30px;
-  }
+    margin-top: 20px;
+    font-size: 22px;
+    }
 
   .declined {
     background-color: #F33203;
@@ -194,10 +181,6 @@ ion-card-subtitle {
 
   .label-rifiuta {
     color: #F33203
-  }
-
-  .card-title {
-    margin-top: 20px
   }
 
   .update-button {

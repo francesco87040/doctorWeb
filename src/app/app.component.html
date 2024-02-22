@@ -9,7 +9,6 @@
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-no-padding">
-          <ng-container *ngIf="user">
             <ion-row class="row-avatar">
               <ion-avatar class="avatar" (click)="openUploadImage()">
                 <img [src]="user?.url" />
@@ -26,17 +25,6 @@
               <ion-icon slot="start" name="options-outline"></ion-icon>
               <ion-label> Prenota </ion-label>
             </ion-item>
-          </ng-container>
-          <ng-container *ngIf="!user">
-            <ion-item (click)="goToPage('registrazione')">
-              <ion-icon slot="start" name="options-outline"></ion-icon>
-              <ion-label>Registrati</ion-label>
-            </ion-item>
-            <ion-item (click)="goToPage('login')">
-              <ion-icon slot="start" name="options-outline"></ion-icon>
-              <ion-label>Login</ion-label>
-            </ion-item>
-          </ng-container>
           <ion-item (click)="goToPage('contatti')">
             <ion-icon slot="start" name="options-outline"></ion-icon>
             <ion-label> Contatti </ion-label>
